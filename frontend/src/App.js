@@ -1,11 +1,17 @@
+import React from "react";
+import AboutUs from "./components/AboutUs";
+import { BrowserRouter as Router } from "react-router-dom";
 //import logo from './logo.svg';
 //import './App.css';
 
 function App() {
   return (
-    <div className="App">
-     <h1>Lets do this</h1>
-    </div>
+    <Router>
+      <div>
+        <h1>Lets do this</h1>
+        <AboutUs />
+      </div>
+    </Router>
   );
 }
 
