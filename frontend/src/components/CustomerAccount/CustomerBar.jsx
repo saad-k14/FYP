@@ -34,7 +34,7 @@ const CustomerMenu = () => {
             aria-label="menu"
           ></IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/Customer/Profile">Profile</Link>
+            <Link to="/Customer">Profile</Link>
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link to="/Customer/SendRequests">Send Request</Link>
