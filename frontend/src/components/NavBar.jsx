@@ -6,13 +6,11 @@ import CustomerMenu from "./CustomerAccount/CustomerBar";
 class NavBar extends React.Component {
   render() {
     if (window.location.href.indexOf("/business") > -1) {
-      <BusinessMenu />;
+      return <BusinessMenu />;
     }
-    if (window.location.href.indexOf("/customer") > -1) {
-      console.log(window.location.href);
-      <CustomerMenu />;
+    if (window.location.href.indexOf("/Customer") > -1) {
+      return <CustomerMenu />;
     }
-
     return <Menu />;
   }
 }

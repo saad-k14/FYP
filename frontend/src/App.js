@@ -37,7 +37,7 @@ function App() {
           <Route path="/business/checkrequests" component={Checkrequests} />
           <Route path="/business" component={Businesspage} />
 
-          <Route path="/customer/sendrequest" component={sendrequest} />
+          <Route path="/customer/sendrequests" component={sendrequest} />
           <Route path="/customer/searchbusiness" component={searchbusiness} />
           <Route path="/customer" component={customerpage} />
 
