@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var usersSchema = mongoose.Schema({
+var b_usersSchema = mongoose.Schema({
   name: String,
   username: String,
   email: String,
@@ -8,12 +8,8 @@ var usersSchema = mongoose.Schema({
   categories: String,
   password: String,
   link: String,
-  role: {
-    type: String,
-    default: "Customer",
-  },
 });
 
-var User = mongoose.model("User", usersSchema);
+var b_Users = mongoose.model("User", b_usersSchema);
 
-module.exports = User;
+module.exports = b_Users;
