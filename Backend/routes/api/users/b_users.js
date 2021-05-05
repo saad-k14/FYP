@@ -16,6 +16,18 @@ router.put("/:id", async (req, res) => {
   return res.send(user);
 });
 
+router.post("/", async (req, res) => {
+  var result = new User();
+  result.name = req.body.name;
+  result.username = req.body.username;
+  result.password = req.body.password;
+  result.categories = req.body.categories;
+  result.email = req.body.email;
+  result.link = req.body.link;
+  await result.save();
+  res.send(result);
+});
+
 //search all users
 router.get("/", async (req, res) => {
   let allusers = await User.find();
