@@ -1,14 +1,28 @@
 const express = require("express");
 let router = express.Router();
-var User = require("../../models/b_usersmodel");
+var User = require("../../../models/b_usersmodel");
 
-//get all users
+//update user
+router.put("/:id", async (req, res) => {
+  let user = await User.findById(req.params.id);
+  user.name = req.body.name;
+  user.username = req.body.username;
+  user.email = req.body.email;
+  user.phone = req.body.phone;
+  user.categories = req.body.categories;
+  user.password = req.body.password;
+  user.link = req.body.link;
+  await user.save();
+  return res.send(user);
+});
+
+//search all users
 router.get("/", async (req, res) => {
   let allusers = await User.find();
   return res.send(allusers);
 });
 
-//get single user
+//search a single user via username
 router.get("/:username", async (req, res) => {
   try {
     let user = await User.findOne({ username: req.params.username });
@@ -19,7 +33,7 @@ router.get("/:username", async (req, res) => {
   }
 });
 
-//get all users who belong to a specific category
+//search all users that belong to a single category
 router.get("/category/:categories", async (req, res) => {
   try {
     let user = await User.find({ categories: req.params.categories });
@@ -28,28 +42,6 @@ router.get("/category/:categories", async (req, res) => {
   } catch (err) {
     return res.status(400).send("category doesn't exists"); //when format aint correct
   }
-});
-
-//update category
-router.put("/:id", async (req, res) => {
-  let category = await Category.findById(req.params.id);
-  category.title = req.body.title;
-  await category.save();
-  return res.send(category);
-});
-
-//delete category
-router.delete("/:id", async (req, res) => {
-  let category = await Category.findByIdAndDelete(req.params.id);
-  return res.send(category);
-});
-
-//insert category
-router.post("/post", async (req, res) => {
-  let category = new Category();
-  category.title = req.body.title;
-  await category.save();
-  return res.send(category);
 });
 
 module.exports = router;
