@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
   result.password = req.body.password;
   result.categories = req.body.categories;
   result.email = req.body.email;
+  result.phone = req.body.phone;
   result.link = req.body.link;
   await result.save();
   res.send(result);
