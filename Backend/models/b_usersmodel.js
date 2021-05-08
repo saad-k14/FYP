@@ -7,7 +7,7 @@ var b_usersSchema = mongoose.Schema({
   phone: String,
   categories: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   password: String,
-  link: String,
+  details: String,
 });
 
 var b_Users = mongoose.model("B_User", b_usersSchema);

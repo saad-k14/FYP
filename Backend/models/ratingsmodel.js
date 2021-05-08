@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+/*var mongoose = require("mongoose");
 
 var ratingsSchema = mongoose.Schema({
   rating: Number,
@@ -9,4 +9,4 @@ var ratingsSchema = mongoose.Schema({
 
 var ratings = mongoose.model("Ratings", ratingsSchema);
 
-module.exports = ratings;
+module.exports = ratings;*/

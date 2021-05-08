@@ -11,7 +11,7 @@ router.put("/:id", async (req, res) => {
   user.phone = req.body.phone;
   user.categories = req.body.categories;
   user.password = req.body.password;
-  user.link = req.body.link;
+  user.details = req.body.details;
   await user.save();
   return res.send(user);
 });
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
   result.categories = req.body.categories;
   result.email = req.body.email;
   result.phone = req.body.phone;
-  result.link = req.body.link;
+  result.details = req.body.details;
   await result.save();
   res.send(result);
 });

@@ -1,15 +1,11 @@
 const express = require("express");
 let router = express.Router();
-var Request = require("../../models/request");
+var { Request, validate } = require("../../models/requestmodel");
 
-//get all request
-router.get("/", async (req, res) => {
-  let result = await Request.find();
-  return res.send(result);
-});
-
-//insert category
-router.post("/", async (req, res) => {
+//insert request
+router.post("/newrequest", async (req, res) => {
+  let error = validate(req.body);
+  return res.send(error);
   var result = await new Request();
   result.user = req.body.user;
   result.category = req.body.category;
@@ -18,6 +14,12 @@ router.post("/", async (req, res) => {
   result.minprice = req.body.minprice;
   result.maxprice = req.body.maxprice;
   await result.save();
+  return res.send(result);
+});
+
+//get all request
+router.get("/", async (req, res) => {
+  let result = await Request.find();
   return res.send(result);
 });
 
