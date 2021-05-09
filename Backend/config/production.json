@@ -1,3 +1,4 @@
 {
-  "db": "mongodb://localhost/dibuzz"
+  "db": "mongodb://localhost/dibuzz",
+  "jwtPrivatekey": "SomePrivateKey"
 }

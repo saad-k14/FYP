@@ -1,27 +1,53 @@
 const express = require("express");
 let router = express.Router();
-let User = require("../../../models/c_usersmodel");
+let { c_Users } = require("../../../models/c_usersmodel");
+var bcrypt = require("bcryptjs");
+const _ = require("lodash");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
 //for signup
 router.post("/register", async (req, res) => {
-  let user = new User();
+  let user = await c_Users.findOne({ email: req.body.email });
+  if (user)
+    return res.status(400).send("User with the given email already exists");
+  user = new c_Users();
   user.name = req.body.name;
   user.password = req.body.password;
+  let salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(user.password, salt);
   user.email = req.body.email;
   user.phone = req.body.phone;
-  await result.save();
-  res.send(user);
+  await user.save();
+  return res.send(_.pick(user, ["name", "email", "phone"]));
+});
+
+router.post("/login", async (req, res) => {
+  let user = await c_Users.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send("User is not registered");
+  let isValid = await bcrypt.compare(req.body.password, user.password);
+  if (!isValid) return res.status(401).send("Invalid Password!!");
+  let token = jwt.sign(
+    { _id: user._id, name: user.name, phone: user.phone },
+    config.get("jwtPrivatekey")
+  );
+  res.send(token);
 });
 
 //update user
 router.put("/:id", async (req, res) => {
-  let user = await User.findById(req.params.id);
+  let user = await c_Users.findById(req.params.id);
   user.name = req.body.name;
   user.email = req.body.email;
   user.phone = req.body.phone;
   user.password = req.body.password;
   await user.save();
   return res.send(user);
+});
+
+router.get("/", async (req, res) => {
+  let allusers = await c_Users.find();
+  return res.send(allusers);
 });
 
 /*

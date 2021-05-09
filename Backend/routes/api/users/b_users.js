@@ -1,10 +1,10 @@
 const express = require("express");
 let router = express.Router();
-let User = require("../../../models/b_usersmodel");
+let b_Users = require("../../../models/b_usersmodel");
 
 //new user
 router.post("/register", async (req, res) => {
-  var result = new User();
+  var result = new b_Users();
   user.name = req.body.name;
   user.username = req.body.username;
   user.email = req.body.email;

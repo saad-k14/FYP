@@ -41,4 +41,10 @@ router.get("/businessrequests/:id", async (req, res) => {
   res.send(result);
 });
 
+//delete a request
+router.delete("/:id", async (req, res) => {
+  let result = await Request.findByIdAndDelete(req.params.id);
+  return res.send(result);
+});
+
 module.exports = router;

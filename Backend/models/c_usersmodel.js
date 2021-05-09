@@ -25,7 +25,7 @@ function validateCustomerLogin(data) {
     email: Joi.string().email().required(),
     password: Joi.string().min(6).max(16).required(),
   });
-  return schema.validateCustomerLogin(data, { abortEarly: false });
+  return schema.validateCustomer(data, { abortEarly: false });
 }
 
 module.exports.c_Users = c_Users;
