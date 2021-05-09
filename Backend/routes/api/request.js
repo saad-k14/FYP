@@ -1,12 +1,24 @@
 const express = require("express");
 let router = express.Router();
-var { Request, validate } = require("../../models/requestmodel");
+const validateRequest = require("../../middlewares/validaterequests");
+var { Request } = require("../../models/requestmodel");
 
 //insert request
-router.post("/newrequest", async (req, res) => {
-  let error = validate(req.body);
-  return res.send(error);
+router.post("/newrequest", validateRequest, async (req, res) => {
   var result = await new Request();
+  result.user = req.body.user;
+  result.category = req.body.category;
+  result.details = req.body.details;
+  result.duration = req.body.duration;
+  result.minprice = req.body.minprice;
+  result.maxprice = req.body.maxprice;
+  await result.save();
+  return res.send(result);
+});
+
+//update a request
+router.put("/:id", validateRequest, async (req, res) => {
+  let result = await Request.findById(req.params.id);
   result.user = req.body.user;
   result.category = req.body.category;
   result.details = req.body.details;
@@ -23,6 +35,7 @@ router.get("/", async (req, res) => {
   return res.send(result);
 });
 
+//all the requests related to a category
 router.get("/businessrequests/:id", async (req, res) => {
   var result = await Request.find({ category: req.params.id });
   res.send(result);

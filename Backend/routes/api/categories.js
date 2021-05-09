@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
-var Category = require("../../models/categorymodel");
+const validateCategory = require("../../middlewares/validatecategories");
+var { Category } = require("../../models/categorymodel");
 
 //get all categories
 router.get("/", async (req, res) => {
@@ -20,7 +21,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //update category
-router.put("/:id", async (req, res) => {
+router.put("/:id", validateCategory, async (req, res) => {
   let category = await Category.findById(req.params.id);
   category.title = req.body.title;
   await category.save();
@@ -34,7 +35,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //insert category
-router.post("/post", async (req, res) => {
+router.post("/post", validateCategory, async (req, res) => {
   let category = new Category();
   category.title = req.body.title;
   await category.save();

@@ -16,9 +16,9 @@ var Request = mongoose.model("Request", requestSchema);
 
 function validateRequest(data) {
   const schema = Joi.object({
-    //user: Joi.().required(),
-    //category: Joi.ObjectId().required(),
-    details: Joi.string().required(),
+    user: Joi.required(),
+    category: Joi.required(),
+    details: Joi.string().min(10).required(),
     minprice: Joi.number().min(0).required(),
     maxprice: Joi.number().greater(3).required(),
     duration: Joi.number().min(3).required(),

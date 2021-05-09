@@ -1,6 +1,20 @@
 const express = require("express");
 let router = express.Router();
-var User = require("../../../models/b_usersmodel");
+let User = require("../../../models/b_usersmodel");
+
+//new user
+router.post("/register", async (req, res) => {
+  var result = new User();
+  user.name = req.body.name;
+  user.username = req.body.username;
+  user.email = req.body.email;
+  user.phone = req.body.phone;
+  user.categories = req.body.categories;
+  user.password = req.body.password;
+  user.details = req.body.details;
+  await result.save();
+  res.send(result);
+});
 
 //update user
 router.put("/:id", async (req, res) => {
@@ -14,19 +28,6 @@ router.put("/:id", async (req, res) => {
   user.details = req.body.details;
   await user.save();
   return res.send(user);
-});
-
-router.post("/", async (req, res) => {
-  var result = new User();
-  result.name = req.body.name;
-  result.username = req.body.username;
-  result.password = req.body.password;
-  result.categories = req.body.categories;
-  result.email = req.body.email;
-  result.phone = req.body.phone;
-  result.details = req.body.details;
-  await result.save();
-  res.send(result);
 });
 
 //search all users
@@ -43,6 +44,17 @@ router.get("/:username", async (req, res) => {
     return res.send(user); //all good
   } catch (err) {
     return res.status(400).send("Invalid username"); //when format aint correct
+  }
+});
+
+//search a single user via id
+router.get("/:id", async (req, res) => {
+  try {
+    let user = await User.findById(req.params.id);
+    if (!user) return res.status(400).send("the id belongs to no user"); //when id is not available
+    return res.send(user); //all good
+  } catch (err) {
+    return res.status(400).send("Invalid id"); //when format aint correct
   }
 });
 

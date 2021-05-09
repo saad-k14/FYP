@@ -1,6 +1,17 @@
 const express = require("express");
 let router = express.Router();
-var User = require("../../../models/c_usersmodel");
+let User = require("../../../models/c_usersmodel");
+
+//for signup
+router.post("/register", async (req, res) => {
+  let user = new User();
+  user.name = req.body.name;
+  user.password = req.body.password;
+  user.email = req.body.email;
+  user.phone = req.body.phone;
+  await result.save();
+  res.send(user);
+});
 
 //update user
 router.put("/:id", async (req, res) => {
@@ -11,16 +22,6 @@ router.put("/:id", async (req, res) => {
   user.password = req.body.password;
   await user.save();
   return res.send(user);
-});
-
-router.post("/", async (req, res) => {
-  var result = new User();
-  result.name = req.body.name;
-  result.password = req.body.password;
-  result.email = req.body.email;
-  result.phone = req.body.phone;
-  await result.save();
-  res.send(result);
 });
 
 /*
