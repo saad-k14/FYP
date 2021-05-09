@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+const Joi = require("@hapi/joi");
 
 var b_usersSchema = mongoose.Schema({
   name: String,
@@ -9,9 +10,31 @@ var b_usersSchema = mongoose.Schema({
   password: String,
   details: String,
 });
-
 var b_Users = mongoose.model("B_User", b_usersSchema);
 
-module.exports = b_Users;
-//module.exports.b_Users = b_Users;
-//module.exports.b_usersSchema = b_usersSchema;
+//for registration
+function validateBusiness(data) {
+  const schema = Joi.object({
+    name: Joi.string().min(3).max(100).required(),
+    username: Joi.string().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    phone: Joi.string().min(3).max(100).required(),
+    categories: Joi.required(),
+    password: Joi.string().min(6).max(16).required(),
+    details: Joi.string().min().max(500).required(),
+  });
+  return schema.validate(data, { abortEarly: false });
+}
+
+//for login
+function validateBusinessLogin(data) {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).max(16).required(),
+  });
+  return schema.validateBusinessLogin(data, { abortEarly: false });
+}
+
+module.exports.b_Users = b_Users;
+module.exports.validate = validateBusiness; //Login
+module.exports.validateCustomerLogin = validateBusinessLogin; //SignUp

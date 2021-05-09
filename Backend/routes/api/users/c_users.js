@@ -22,6 +22,7 @@ router.post("/register", async (req, res) => {
   return res.send(_.pick(user, ["name", "email", "phone"]));
 });
 
+//for login
 router.post("/login", async (req, res) => {
   let user = await c_Users.findOne({ email: req.body.email });
   if (!user) return res.status(400).send("User is not registered");
@@ -34,7 +35,7 @@ router.post("/login", async (req, res) => {
   res.send(token);
 });
 
-//update user
+//update customer
 router.put("/:id", async (req, res) => {
   let user = await c_Users.findById(req.params.id);
   user.name = req.body.name;
@@ -45,6 +46,7 @@ router.put("/:id", async (req, res) => {
   return res.send(user);
 });
 
+//get all customers
 router.get("/", async (req, res) => {
   let allusers = await c_Users.find();
   return res.send(allusers);
