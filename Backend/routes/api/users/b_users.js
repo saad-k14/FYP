@@ -64,7 +64,19 @@ router.put("/:id", async (req, res) => {
 //search all users
 router.get("/", async (req, res) => {
   let allusers = await b_Users.find();
-  return res.send(allusers);
+  return res.send(
+    allusers.map((user) =>
+      _.pick(user, [
+        "_id",
+        "name",
+        "username",
+        "email",
+        "phone",
+        "categories",
+        "details",
+      ])
+    )
+  );
 });
 
 //search a single user via username
