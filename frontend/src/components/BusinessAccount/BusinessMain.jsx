@@ -4,7 +4,7 @@ const Businesspage = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    BusinessService.getBusinessUser("bleh").then((data) => {
+    BusinessService.getBusinessUser("malikmahroze").then((data) => {
       setUser(data);
     });
   }, []);
