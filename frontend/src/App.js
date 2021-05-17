@@ -19,8 +19,12 @@ import customerpage from "./components/CustomerAccount/CustomerMain";
 import searchbusiness from "./components/CustomerAccount/SearchBusinesses";
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
+import B_Login from "./components/auth/Business/BusinessLogin";
+import B_Register from "./components/auth/Business/BusinessRegister";
+
+import C_Login from "./components/auth/Customer/CustomerLogin";
+import C_Register from "./components/auth/Customer/CustomerRegister";
+
 import { ToastContainer, toast } from "react-toastify";
 
 //import logo from './logo.svg';
@@ -38,11 +42,14 @@ function App() {
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />
 
-          <Route path="/business/login" exact component={Login} />
-          <Route path="/business/register" exact component={Register} />
+          <Route path="/business/login" exact component={B_Login} />
+          <Route path="/business/register" exact component={B_Register} />
 
           <Route path="/business/checkrequests" component={Checkrequests} />
           <Route path="/business" exact component={Businesspage} />
+
+          <Route path="/customer/login" exact component={C_Login} />
+          <Route path="/customer/register" exact component={C_Register} />
 
           <Route path="/customer/sendrequests" component={sendrequest} />
           <Route path="/customer/searchbusiness" component={searchbusiness} />

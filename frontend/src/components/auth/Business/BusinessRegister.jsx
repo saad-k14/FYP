@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
-import BusinessServices from "../../services/BusinessService";
+import BusinessServices from "../../../services/BusinessService";
 
 import { toast } from "react-toastify";
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: "60%",
   },
 }));
-const Register = (props) => {
+const B_Register = (props) => {
   const classes = useStyles();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -125,4 +125,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default B_Register;

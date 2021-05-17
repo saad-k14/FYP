@@ -1,7 +1,7 @@
 import GenericService from "./GenericService";
 import jwtDecode from "jwt-decode";
 
-class BusinessService extends GenericService {
+class CustomerService extends GenericService {
   constructor() {
     super();
   }
@@ -9,7 +9,7 @@ class BusinessService extends GenericService {
   //login
   login = (email, password) =>
     new Promise((resolve, reject) => {
-      this.post("b_user/login", { email, password })
+      this.post("c_user/login", { email, password })
         .then((token) => {
           localStorage.setItem("token", token);
           resolve(token);
@@ -20,15 +20,12 @@ class BusinessService extends GenericService {
     });
 
   //register
-  register = (name, email, password, username, categories, phone, details) =>
-    this.post("b_user/register", {
+  register = (name, email, password, phone) =>
+    this.post("c_user/register", {
       password,
       email,
       name,
-      username,
-      categories,
       phone,
-      details,
     });
   logout = () => {
     localStorage.removeItem("token");
@@ -52,5 +49,5 @@ class BusinessService extends GenericService {
 };*/
 }
 
-let BusinessServices = new BusinessService();
-export default BusinessServices;
+let CustomerServices = new CustomerService();
+export default CustomerServices;

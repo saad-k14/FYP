@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-//import userService from "../Services/UserServices";
+import CustomerServices from "../../services/CustomerService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,7 +45,7 @@ const CustomerMenu = () => {
           <Typography variant="h6" className={classes.title}>
             <Link to="/ContactUs">Contact Us</Link>
           </Typography>
-          {/*{!userService.isLoggedIn() ? (
+          {!CustomerServices.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -67,13 +67,13 @@ const CustomerMenu = () => {
               variant="contained"
               color="primary"
               onClick={(e) => {
-                userService.logout();
+                CustomerServices.logout();
                 window.location.reload();
               }}
             >
-              LogOut {userService.getLoggedInUser().name}
+              LogOut {CustomerServices.getLoggedInUser().name}
             </Button>
-            )}*/}
+          )}
         </Toolbar>
       </AppBar>
     </div>
