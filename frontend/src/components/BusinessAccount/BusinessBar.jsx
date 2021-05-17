@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import BusinessService from "../../services/BusinessService";
+import BusinessServices from "../../services/BusinessService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,7 @@ const BusinessMenu = () => {
           <Typography variant="h6" className={classes.title}>
             <Link to="/ContactUs">Contact Us</Link>
           </Typography>
-          {/*{!userService.isLoggedIn() ? (
+          {!BusinessServices.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -64,13 +65,13 @@ const BusinessMenu = () => {
               variant="contained"
               color="primary"
               onClick={(e) => {
-                userService.logout();
+                BusinessServices.logout();
                 window.location.reload();
               }}
             >
-              LogOut {userService.getLoggedInUser().name}
+              LogOut {BusinessServices.getLoggedInUser().name}
             </Button>
-            )}*/}
+          )}
         </Toolbar>
       </AppBar>
     </div>

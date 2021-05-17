@@ -19,6 +19,10 @@ import customerpage from "./components/CustomerAccount/CustomerMain";
 import searchbusiness from "./components/CustomerAccount/SearchBusinesses";
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import { ToastContainer, toast } from "react-toastify";
+
 //import logo from './logo.svg';
 //import './App.css';
 
@@ -34,8 +38,11 @@ function App() {
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />
 
+          <Route path="/business/login" exact component={Login} />
+          <Route path="/business/register" exact component={Register} />
+
           <Route path="/business/checkrequests" component={Checkrequests} />
-          <Route path="/business" component={Businesspage} />
+          <Route path="/business" exact component={Businesspage} />
 
           <Route path="/customer/sendrequests" component={sendrequest} />
           <Route path="/customer/searchbusiness" component={searchbusiness} />
