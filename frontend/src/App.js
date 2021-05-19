@@ -17,6 +17,9 @@ import Checkrequests from "./components/BusinessAccount/CheckRequests";
 import sendrequest from "./components/CustomerAccount/SendRequest";
 import customerpage from "./components/CustomerAccount/CustomerMain";
 import searchbusiness from "./components/CustomerAccount/SearchBusinesses";
+
+import Categories from "./components/categories/Categories";
+
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
 import B_Login from "./components/auth/Business/BusinessLogin";
@@ -38,6 +41,8 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
+
+          <Route path="/categories" component={Categories} />
 
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />

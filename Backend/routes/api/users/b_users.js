@@ -84,7 +84,19 @@ router.get("/:username", async (req, res) => {
   try {
     let user = await b_Users.findOne({ username: req.params.username });
     if (!user) return res.status(400).send("the username belongs to no user"); //when username is not available
-    return res.send(user); //all good
+    return res.send(
+      user.map((user) =>
+        _.pick(user, [
+          "_id",
+          "name",
+          "username",
+          "email",
+          "phone",
+          "categories",
+          "details",
+        ])
+      )
+    ); //all good
   } catch (err) {
     return res.status(400).send("Invalid username"); //when format aint correct
   }
@@ -95,7 +107,19 @@ router.get("/:id", async (req, res) => {
   try {
     let user = await b_Users.findById(req.params.id);
     if (!user) return res.status(400).send("the id belongs to no user"); //when id is not available
-    return res.send(user); //all good
+    return res.send(
+      user.map((user) =>
+        _.pick(user, [
+          "_id",
+          "name",
+          "username",
+          "email",
+          "phone",
+          "categories",
+          "details",
+        ])
+      )
+    ); //all good
   } catch (err) {
     return res.status(400).send("Invalid id"); //when format aint correct
   }
@@ -106,7 +130,19 @@ router.get("/category/:categories", async (req, res) => {
   try {
     let user = await b_Users.find({ categories: req.params.categories });
     if (!user) return res.status(400).send("no accounts in this category"); //when category is not available
-    return res.send(user); //all good
+    return res.send(
+      user.map((user) =>
+        _.pick(user, [
+          "_id",
+          "name",
+          "username",
+          "email",
+          "phone",
+          "categories",
+          "details",
+        ])
+      )
+    ); //all good
   } catch (err) {
     return res.status(400).send("category doesn't exists"); //when format aint correct
   }
