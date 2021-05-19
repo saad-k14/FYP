@@ -44,8 +44,9 @@ class BusinessService extends GenericService {
           reject(err);
         });
     });*/
-  isLoggedIn = async () => {
+  isLoggedIn = () => {
     const jwt = localStorage.getItem("token");
+    if (!jwt) return false;
     const user = jwtDecode(jwt);
     if (user.role == "business") {
       return true;
@@ -55,6 +56,7 @@ class BusinessService extends GenericService {
   };
   getLoggedInUser = () => {
     try {
+      // if (!this.isLoggedIn()) return null;
       const jwt = localStorage.getItem("token");
       return jwtDecode(jwt);
     } catch (ex) {

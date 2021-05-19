@@ -30,11 +30,22 @@ class CustomerService extends GenericService {
   logout = () => {
     localStorage.removeItem("token");
   };
+  // isLoggedIn = () => {
+  //   return localStorage.getItem("token") ? true : false;
+  // };
   isLoggedIn = () => {
-    return localStorage.getItem("token") ? true : false;
+    const jwt = localStorage.getItem("token");
+    if (!jwt) return false;
+    const user = jwtDecode(jwt);
+    if (user.role == "customer") {
+      return true;
+    } else {
+      return false;
+    }
   };
   getLoggedInUser = () => {
     try {
+      //  if (!this.isLoggedIn()) return null;
       const jwt = localStorage.getItem("token");
       return jwtDecode(jwt);
     } catch (ex) {

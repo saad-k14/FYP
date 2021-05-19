@@ -9,7 +9,10 @@ var b_usersSchema = mongoose.Schema({
   categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
   password: String,
   details: String,
-  role: String,
+  role: {
+    type: String,
+    default: "business",
+  },
 });
 var b_Users = mongoose.model("User", b_usersSchema);
 

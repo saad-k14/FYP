@@ -52,7 +52,7 @@ const Menu = () => {
           <Typography variant="h6" className={classes.title}>
             <Link to="/ContactUs">Contact Us</Link>
           </Typography>
-          {/* {!userService.isLoggedIn() ? (
+          {!AuthServices.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -74,14 +74,14 @@ const Menu = () => {
               variant="contained"
               color="primary"
               onClick={(e) => {
-                userService.logout();
+                AuthServices.logout();
                 window.location.reload();
               }}
             >
-              LogOut {userService.getLoggedInUser().name}
+              LogOut
             </Button>
-          )} */}
-          {!AuthServices.isLoggedIn() ? (
+          )}
+          {/* {!AuthServices.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -109,7 +109,7 @@ const Menu = () => {
             >
               LogOut {AuthServices.getLoggedInUser().name}
             </Button>
-          )}
+          )} */}
         </Toolbar>
       </AppBar>
     </div>

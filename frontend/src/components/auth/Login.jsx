@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Grid } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
-import BusinessServices from "../../../services/BusinessService";
-import CustomerServices from "../../../services/CustomerService";
+import BusinessServices from "../../services/BusinessService";
+import CustomerServices from "../../services/CustomerService";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
     width: "60%",
   },
 }));
-const B_Login = (props) => {
+const Login = (props) => {
   const classes = useStyles();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [isCustomer, setIsCustomer] = React.useState(true);
+  const [email, setEmail] = React.useState("admin1@gmail.com");
+  const [password, setPassword] = React.useState("password");
+  const [isCustomer, setIsCustomer] = React.useState(false);
   return (
     <div className="Loginback">
       <div className={classes.container}>
@@ -92,4 +92,4 @@ const B_Login = (props) => {
   );
 };
 
-export default B_Login;
+export default Login;
