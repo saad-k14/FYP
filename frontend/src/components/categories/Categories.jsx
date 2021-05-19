@@ -1,7 +1,9 @@
 import React from "react";
 import SingleCategory from "./SingleCategory";
-
-import { Button, Grid, Link } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+//import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 import categoryServices from "../../services/CategoriesService";
@@ -19,7 +21,7 @@ const Categories = (props) => {
   const classes = useStyles();
   const getData = () => {
     categoryServices
-      .getBlogs()
+      .getCategories()
       .then((data) => {
         setCategories(data);
       })
@@ -29,6 +31,10 @@ const Categories = (props) => {
   };
   //getData();
   React.useEffect(getData, []);
+  const handleNewBlogsClick = () => {
+    console.log(props);
+    props.history.push("categories/newcategory");
+  };
   console.log("inside categories component");
   return (
     <div>
@@ -36,20 +42,29 @@ const Categories = (props) => {
         <Grid item xs={9}>
           <h1>categories</h1>
         </Grid>
-        <Grid item xs={3}>
-          <Link to="categories/new">
-            <Button>Add new Category</Button>
-          </Link>
-        </Grid>
+        <Fab
+          color="primary"
+          aria-label="add"
+          className={classes.addBtn}
+          onClick={handleNewBlogsClick}
+        >
+          <AddIcon />
+        </Fab>
       </Grid>
       {categories.length == 0 ? (
         <p>there are no categories yet</p>
       ) : (
-        <Grid container spacing={3}>
-          {categories.map((category, index) => (
-            <SingleCategory key={index} category={category} />
-          ))}
-        </Grid>
+        <div className="Categories">
+          <Grid container spacing={3}>
+            {categories.map((categories, index) => (
+              <SingleCategory
+                key={index}
+                category={categories}
+                onDelete={getData}
+              />
+            ))}
+          </Grid>
+        </div>
       )}
     </div>
   );

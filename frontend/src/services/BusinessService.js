@@ -44,6 +44,10 @@ class BusinessService extends GenericService {
       return null;
     }
   };
+
+  //idk if this will work
+  getB_Users = (_id) => this.get("b_user/category/:categories" + _id);
+
   /*isAdmin = () => {
   if (this.isLoggedIn()) {
     if (this.getLoggedInUser().role == "admin") return true;

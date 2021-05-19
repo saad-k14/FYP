@@ -19,6 +19,8 @@ import customerpage from "./components/CustomerAccount/CustomerMain";
 import searchbusiness from "./components/CustomerAccount/SearchBusinesses";
 
 import Categories from "./components/categories/Categories";
+import NewCategory from "./components/categories/NewCategory";
+import UpdateCategory from "./components/categories/UpdateCategory";
 
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
@@ -42,7 +44,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
 
-          <Route path="/categories" component={Categories} />
+          <Route path="/categories/newcategory" component={NewCategory} />
+          <Route path="/categories/update/:id" component={UpdateCategory} />
+          <Route exacy path="/categories" component={Categories} />
 
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />

@@ -3,14 +3,11 @@ class CategoriesService extends GenericService {
   constructor() {
     super();
   }
-  addBlog = (data) => this.post("category/post", data);
-  deleteBlog = (_id) => this.delete("category/" + _id);
-  updateBlog = (_id, data) => this.put("category/" + _id, data);
-  getBlogs = () => this.get("category");
-  getSingleBlog = (id) => this.get("category/" + id);
-
-  //idk if this will work
-  getB_Users = (_id) => this.get("b_user/category/" + _id);
+  addCategory = (data) => this.post("category/post", data);
+  deleteCategory = (_id) => this.delete("category/" + _id);
+  updateCategory = (_id, data) => this.put("category/" + _id, data);
+  getCategories = () => this.get("category");
+  getSingleCategory = (id) => this.get("category/" + id);
 }
 
 let categoryServices = new CategoriesService();
