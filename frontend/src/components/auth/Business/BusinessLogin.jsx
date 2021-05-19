@@ -48,7 +48,7 @@ const B_Login = (props) => {
               BusinessServices.login(email, password)
                 .then((data) => {
                   console.log(data);
-                  window.location.href = "/";
+                  window.location.href = "/business";
                 })
                 .catch((err) => {
                   console.log(err);

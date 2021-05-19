@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
-let { c_Users } = require("../../../models/c_usersmodel");
+let { c_Users } = require("../../../models/b_usersmodel");
+const customerauth = require("../../../middlewares/customerauth");
 var bcrypt = require("bcryptjs");
 const _ = require("lodash");
 const jwt = require("jsonwebtoken");
@@ -13,13 +14,14 @@ router.post("/register", async (req, res) => {
     return res.status(400).send("User with the given email already exists");
   user = new c_Users();
   user.name = req.body.name;
+  user.role = "customer";
   user.password = req.body.password;
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   user.email = req.body.email;
   user.phone = req.body.phone;
   await user.save();
-  return res.send(_.pick(user, ["name", "email", "phone"]));
+  return res.send(_.omit(user, ["password"]));
 });
 
 //for login
@@ -50,6 +52,10 @@ router.put("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   let allusers = await c_Users.find();
   return res.send(allusers);
+});
+
+router.put("/auth", customerauth, async (req, res) => {
+  return res.send(req.user);
 });
 
 /*

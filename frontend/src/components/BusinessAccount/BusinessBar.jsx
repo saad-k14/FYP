@@ -46,14 +46,14 @@ const BusinessMenu = () => {
             <>
               <div className="login">
                 <Typography variant="h6">
-                  <Link to="/login" className={classes.link}>
+                  <Link to="/business/login" className={classes.link}>
                     Login
                   </Link>
                 </Typography>
               </div>
               <div className="Register">
                 <Typography variant="h6">
-                  <Link to="/register" className={classes.link}>
+                  <Link to="/business/register" className={classes.link}>
                     Register
                   </Link>
                 </Typography>
@@ -68,7 +68,7 @@ const BusinessMenu = () => {
                 window.location.reload();
               }}
             >
-              LogOut {BusinessServices.getLoggedInUser().name}
+              LogOut {BusinessServices.getLoggedInUser()}
             </Button>
           )}
         </Toolbar>

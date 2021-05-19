@@ -49,14 +49,14 @@ const CustomerMenu = () => {
             <>
               <div className="login">
                 <Typography variant="h6">
-                  <Link to="/login" className={classes.link}>
+                  <Link to="/customer/login" className={classes.link}>
                     Login
                   </Link>
                 </Typography>
               </div>
               <div className="Register">
                 <Typography variant="h6">
-                  <Link to="/register" className={classes.link}>
+                  <Link to="/customer/register" className={classes.link}>
                     Register
                   </Link>
                 </Typography>

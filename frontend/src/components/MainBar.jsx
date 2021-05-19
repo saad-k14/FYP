@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,7 +6,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-//import userService from "../Services/UserServices";
+import AuthServices from "../services/AuthService";
+import BusinessServices from "../services/BusinessService";
+import CustomerServices from "../services/CustomerService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = () => {
   const classes = useStyles();
+  React.useEffect(() => {
+    if (BusinessServices.isLoggedIn()) {
+      window.location.href = "/business";
+    }
+    if (CustomerServices.isLoggedIn()) {
+      window.location.href = "/customer";
+    }
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -42,7 +52,7 @@ const Menu = () => {
           <Typography variant="h6" className={classes.title}>
             <Link to="/ContactUs">Contact Us</Link>
           </Typography>
-          {/*{!userService.isLoggedIn() ? (
+          {/* {!userService.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -70,7 +80,36 @@ const Menu = () => {
             >
               LogOut {userService.getLoggedInUser().name}
             </Button>
-            )}*/}
+          )} */}
+          {!AuthServices.isLoggedIn() ? (
+            <>
+              <div className="login">
+                <Typography variant="h6">
+                  <Link to="/login" className={classes.link}>
+                    Login
+                  </Link>
+                </Typography>
+              </div>
+              <div className="Register">
+                <Typography variant="h6">
+                  <Link to="/register" className={classes.link}>
+                    Register
+                  </Link>
+                </Typography>
+              </div>
+            </>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={(e) => {
+                AuthServices.logout();
+                window.location.reload();
+              }}
+            >
+              LogOut {AuthServices.getLoggedInUser().name}
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>

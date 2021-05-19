@@ -22,6 +22,10 @@ import Categories from "./components/categories/Categories";
 import NewCategory from "./components/categories/NewCategory";
 import UpdateCategory from "./components/categories/UpdateCategory";
 
+import Requests from "./components/requests/Requests";
+import NewRequest from "./components/requests/NewRequest";
+import UpdateRequest from "./components/requests/UpdateRequest";
+
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
 import B_Login from "./components/auth/Business/BusinessLogin";
@@ -48,11 +52,15 @@ function App() {
           <Route path="/categories/update/:id" component={UpdateCategory} />
           <Route exacy path="/categories" component={Categories} />
 
+          <Route path="/requests/newrequest" component={NewRequest} />
+          <Route path="/requests/update/:id" component={UpdateRequest} />
+          <Route exacy path="/requests" component={Requests} />
+
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />
 
-          <Route path="/business/login" exact component={B_Login} />
-          <Route path="/business/register" exact component={B_Register} />
+          <Route path="/business/login" component={B_Login} />
+          <Route path="/business/register" component={B_Register} />
 
           <Route path="/business/checkrequests" component={Checkrequests} />
           <Route path="/business" exact component={Businesspage} />

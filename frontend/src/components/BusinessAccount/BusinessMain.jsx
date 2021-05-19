@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import BusinessServices from "../../services/BusinessService";
-const Businesspage = () => {
+import BusinessUserAuth from "../auth/Business/BusinessUserAuth";
+const Businesspage = (props) => {
   const [user, setUser] = useState({});
-
-  /*useEffect(() => {
-    BusinessService.getBusinessUser("malikmahroze").then((data) => {
-      setUser(data);
-    });
+  /*React.useEffect(() => {
+    const user = BusinessServices.getLoggedInUser();
+    if (!user) window.location.href = "/business/login";
+    setUser(user);
   }, []);*/
   return (
-    <div className="Businessback">
-      <h1>This is the profile page for a business account</h1>
-      <h2>Name: {BusinessServices.getLoggedInUser().name}</h2>
-      <p>Category: {BusinessServices.getLoggedInUser().categories}</p>
-    </div>
+    <BusinessUserAuth>
+      <div className="Businessback">
+        <h1>This is the profile page for a business account</h1>
+        <h2>Name: {user.name}</h2>
+        <p>Category: {user.categories}</p>
+      </div>
+    </BusinessUserAuth>
   );
 };
 

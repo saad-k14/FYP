@@ -33,8 +33,25 @@ class BusinessService extends GenericService {
   logout = () => {
     localStorage.removeItem("token");
   };
-  isLoggedIn = () => {
-    return localStorage.getItem("token") ? true : false;
+  /*isLoggedIn = () =>
+    new Promise((resolve, reject) => {
+      this.post("b_user/login", { email, password })
+        .then((token) => {
+          localStorage.setItem("token", token);
+          resolve(token);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });*/
+  isLoggedIn = async () => {
+    const jwt = localStorage.getItem("token");
+    const user = jwtDecode(jwt);
+    if (user.role == "business") {
+      return true;
+    } else {
+      return false;
+    }
   };
   getLoggedInUser = () => {
     try {

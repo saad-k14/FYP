@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
 let { b_Users } = require("../../../models/b_usersmodel");
+const businessauth = require("../../../middlewares/businessauth");
 var bcrypt = require("bcryptjs");
 const _ = require("lodash");
 const jwt = require("jsonwebtoken");
@@ -14,6 +15,7 @@ router.post("/register", async (req, res) => {
   user = new b_Users();
   user.name = req.body.name;
   user.password = req.body.password;
+  user.role = "business";
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   user.username = req.body.username;
@@ -22,9 +24,7 @@ router.post("/register", async (req, res) => {
   user.categories = req.body.categories;
   user.details = req.body.details;
   await user.save();
-  return res.send(
-    _.pick(user, ["name", "email", "phone", "categories", "details"])
-  );
+  return res.send(_.omit(user, ["password"]));
 });
 
 //for login
@@ -59,6 +59,10 @@ router.put("/:id", async (req, res) => {
   user.details = req.body.details;
   await user.save();
   return res.send(user);
+});
+
+router.put("/auth", businessauth, async (req, res) => {
+  return res.send(req.user);
 });
 
 //search all users

@@ -9,8 +9,9 @@ var b_usersSchema = mongoose.Schema({
   categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
   password: String,
   details: String,
+  role: String,
 });
-var b_Users = mongoose.model("B_User", b_usersSchema);
+var b_Users = mongoose.model("User", b_usersSchema);
 
 //for registration
 function validateBusiness(data) {
@@ -35,6 +36,16 @@ function validateBusinessLogin(data) {
   return schema.validateBusinessLogin(data, { abortEarly: false });
 }
 
+function validateCustomerLogin(data) {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).max(16).required(),
+  });
+  return schema.validateCustomerLogin(data, { abortEarly: false });
+}
+
 module.exports.b_Users = b_Users;
-module.exports.validate = validateBusiness; //Login
-module.exports.validateCustomerLogin = validateBusinessLogin; //SignUp
+module.exports.validateBusinessLogin = validateBusinessLogin; //SignUp
+
+module.exports.c_Users = b_Users;
+module.exports.validateCustomerLogin = validateCustomerLogin; //SignUp

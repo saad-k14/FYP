@@ -41,6 +41,12 @@ router.get("/businessrequests/:id", async (req, res) => {
   res.send(result);
 });
 
+//all requests by a single user
+router.get("/myrequests/:id", async (req, res) => {
+  var result = await Request.find({ user: req.params.id });
+  res.send(result);
+});
+
 //delete a request
 router.delete("/:id", async (req, res) => {
   let result = await Request.findByIdAndDelete(req.params.id);
