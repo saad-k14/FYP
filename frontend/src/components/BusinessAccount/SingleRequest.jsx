@@ -11,6 +11,7 @@ const SingleRequest = (props) => {
   return (
     <Grid item xs={4}>
       <h2>{request.category}</h2>
+      <p>{request.user}</p>
       <p>{request.details}</p>
       <p>
         {request.minprice}, {request.maxprice}

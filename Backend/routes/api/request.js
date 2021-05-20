@@ -19,7 +19,7 @@ router.post("/post", validateRequest, async (req, res) => {
 //update a request
 router.put("/:id", validateRequest, async (req, res) => {
   let result = await Request.findById(req.params.id);
-  result.user = req.body.category;
+  result.user = req.body.user;
   result.category = req.body.category;
   result.details = req.body.details;
   result.duration = req.body.duration;
