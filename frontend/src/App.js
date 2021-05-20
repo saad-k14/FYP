@@ -16,7 +16,7 @@ import Businesspage from "./components/BusinessAccount/BusinessMain";
 import Checkrequests from "./components/BusinessAccount/CheckRequests";
 import sendrequest from "./components/CustomerAccount/SendRequest";
 import customerpage from "./components/CustomerAccount/CustomerMain";
-import searchbusiness from "./components/CustomerAccount/SearchBusinesses";
+import Searchbusiness from "./components/CustomerAccount/SearchBusinesses";
 
 import Categories from "./components/categories/Categories";
 import NewCategory from "./components/categories/NewCategory";
@@ -80,7 +80,7 @@ function App() {
             component={UpdateRequest}
           />
           <Route path="/customer/requests" component={Requests} />
-          <Route path="/customer/searchbusiness" component={searchbusiness} />
+          <Route path="/customer/searchbusiness" component={Searchbusiness} />
           <Route path="/customer" component={customerpage} />
 
           <Route path="/Not-Found" component={NotFound} />

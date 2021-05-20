@@ -31,7 +31,7 @@ const Categories = (props) => {
   };
   //getData();
   React.useEffect(getData, []);
-  const handleNewBlogsClick = () => {
+  const handleNewCategoryClick = () => {
     console.log(props);
     props.history.push("categories/newcategory");
   };
@@ -46,7 +46,7 @@ const Categories = (props) => {
           color="primary"
           aria-label="add"
           className={classes.addBtn}
-          onClick={handleNewBlogsClick}
+          onClick={handleNewCategoryClick}
         >
           <AddIcon />
         </Fab>
