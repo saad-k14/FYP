@@ -3,6 +3,7 @@ import { Grid, TextField, Button } from "@material-ui/core";
 import requestServices from "../../services/RequestService";
 
 const NewRequest = (props) => {
+  const [user, setUser] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [details, setDetails] = React.useState("");
   const [minprice, setMinprice] = React.useState("");
@@ -18,6 +19,14 @@ const NewRequest = (props) => {
         </Grid>
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
+          <TextField
+            label="User"
+            fullWidth
+            value={user}
+            onChange={(e) => {
+              setUser(e.target.value);
+            }}
+          />
           <TextField
             label="Category"
             fullWidth
@@ -67,7 +76,14 @@ const NewRequest = (props) => {
             color="primary"
             onClick={(e) => {
               requestServices
-                .addRequest({ category })
+                .addRequest({
+                  user,
+                  category,
+                  details,
+                  minprice,
+                  maxprice,
+                  duration,
+                })
                 .then((data) => {
                   console.log(data);
                   props.history.push("/requests");

@@ -4,6 +4,7 @@ import axios from "axios";
 import requestServices from "../../services/RequestService";
 
 const UpdateRequest = (props) => {
+  const [user, setUser] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [details, setDetails] = React.useState("");
   const [minprice, setMinprice] = React.useState("");
@@ -13,6 +14,7 @@ const UpdateRequest = (props) => {
   const id = props.match.params.id;
   React.useEffect(() => {
     requestServices.getSingleRequest(id).then((data) => {
+      setUser(data.user);
       setCategory(data.category);
       setDetails(data.details);
       setMinprice(data.minprice);
@@ -30,6 +32,14 @@ const UpdateRequest = (props) => {
         </Grid>
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
+          <TextField
+            label="User"
+            fullWidth
+            value={user}
+            onChange={(e) => {
+              setUser(e.target.value);
+            }}
+          />
           <TextField
             label="Category"
             fullWidth
@@ -65,7 +75,7 @@ const UpdateRequest = (props) => {
           <TextField
             label="Duration"
             fullWidth
-            value={category}
+            value={duration}
             onChange={(e) => {
               setDuration(e.target.value);
             }}
@@ -79,7 +89,14 @@ const UpdateRequest = (props) => {
             color="primary"
             onClick={(e) => {
               requestServices
-                .updateRequest(id, { category })
+                .updateRequest(id, {
+                  user,
+                  category,
+                  details,
+                  minprice,
+                  maxprice,
+                  duration,
+                })
                 .then((data) => {
                   console.log(data);
                   props.history.push("/requests");

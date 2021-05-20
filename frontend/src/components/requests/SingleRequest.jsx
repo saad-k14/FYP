@@ -12,7 +12,7 @@ const SingleRequest = (props) => {
     <Grid item xs={4}>
       <h2>
         <>
-          <div>{request.user}</div>
+          <div>{request.category}</div>
           <Button
             variant="contained"
             color="primary"
