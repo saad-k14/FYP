@@ -10,11 +10,7 @@ const HomePage = () => {
       window.location.href = "/customer";
     }
   }, []);
-  return (
-    <div className="Homeback">
-      <h1>this is the homepage of dibuzz ayyyyy</h1>
-    </div>
-  );
+  return <div className="Homeback"></div>;
 };
 
 export default HomePage;

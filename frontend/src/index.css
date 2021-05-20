@@ -1,3 +1,12 @@
 .title {
   text-align: center;
+  background-image: url("./dibuzz.jpg");
+}
+
+.Homeback {
+  background-image: url("./dibuzz.jpg");
+  background-size: cover;
+  height: 500px;
+  width: 1248px;
+  background-position: unset;
 }

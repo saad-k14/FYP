@@ -81,7 +81,7 @@ function App() {
           />
           <Route path="/customer/requests" component={Requests} />
           <Route path="/customer/searchbusiness" component={Searchbusiness} />
-          <Route path="/customer" component={customerpage} />
+          <Route path="/customer" component={Searchbusiness} />
 
           <Route path="/Not-Found" component={NotFound} />
           <Redirect to="/Not-Found" />
