@@ -1,12 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import {
+  Switch,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Button,
+} from "@material-ui/core";
 
 import categoryServices from "../../services/CategoriesService";
+import BusinessServices from "../../services/BusinessService";
 import SingleCategory from "../categories/SingleCategory";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Searchbusiness = () => {
   const [categories, setCategories] = React.useState([]);
+  const [category, setCategory] = React.useState("");
   const classes = useStyles();
   const getData = () => {
     categoryServices
@@ -38,10 +44,13 @@ const Searchbusiness = () => {
         console.log(err);
       });
   };
-  const [age, setAge] = React.useState("");
-  const handleChange = (event) => {
-    setAge(event.target.value);
+
+  const getCategories = () => {
+    categoryServices.getCategories().then((data) => {
+      setCategories(data);
+    });
   };
+  React.useEffect(getCategories, []);
 
   return (
     <div>
@@ -52,20 +61,39 @@ const Searchbusiness = () => {
           label="Enter a username"
           variant="filled"
         />
+        <Button variant="contained" color="primary" onClick={(e) => {}}>
+          Search By Username
+        </Button>
       </div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+      <div className={classes.root}>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          onChange={handleChange}
+          id="category"
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {categories.map((d, index) => (
+            <MenuItem value={d._id} key={index}>
+              {d.title}
+            </MenuItem>
+          ))}
         </Select>
-      </FormControl>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={(e) => {
+            BusinessServices.getB_UsersBycategory(category).then((data) => {
+              console.log(data);
+            });
+          }}
+        >
+          Search By Category
+        </Button>
+      </div>
+      <div></div>
     </div>
   );
 };

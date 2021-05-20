@@ -87,7 +87,7 @@ router.get("/", async (req, res) => {
 });
 router.get("/myrequests", businessauth, async (req, res) => {
   let requests = await Request.find({
-    category: req.user.categories[0],
+    category: req.user.categories,
     approved: false,
   });
   return res.send(requests);
@@ -140,10 +140,12 @@ router.get("/:id", async (req, res) => {
 });
 
 //search all users that belong to a single category
-router.get("/category/:categories", async (req, res) => {
+router.get("/category/:id", async (req, res) => {
   try {
-    let user = await b_Users.find({ categories: req.params.categories });
+    console.log(req.params.id);
+    let user = await b_Users.find({ categories: req.params.id, role: 0 });
     if (!user) return res.status(400).send("no accounts in this category"); //when category is not available
+    console.log(user);
     return res.send(
       user.map((user) =>
         _.pick(user, [
@@ -154,10 +156,12 @@ router.get("/category/:categories", async (req, res) => {
           "phone",
           "categories",
           "details",
+          "role",
         ])
       )
     ); //all good
   } catch (err) {
+    console.log(err);
     return res.status(400).send("category doesn't exists"); //when format aint correct
   }
 });

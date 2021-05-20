@@ -74,7 +74,7 @@ class BusinessService extends GenericService {
   };
 
   //idk if this will work
-  getB_Users = (_id) => this.get("b_user/category/:categories" + _id);
+  getB_UsersBycategory = (_id) => this.get("b_user/category/" + _id);
 
   /*isAdmin = () => {
   if (this.isLoggedIn()) {

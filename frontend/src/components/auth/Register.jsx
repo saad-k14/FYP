@@ -1,9 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Button, Grid, Switch } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Grid,
+  Switch,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@material-ui/core";
 import BusinessServices from "../../services/BusinessService";
 import CustomerServices from "../../services/CustomerService";
-
+import categoryServices from "../../services/CategoriesService";
 import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,9 +32,17 @@ const Register = (props) => {
   const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [phone, setPhone] = React.useState("");
-  const [categories, setCategories] = React.useState("");
+  const [categories, setCategories] = React.useState([]);
   const [details, setDetails] = React.useState("");
   const [isCustomer, setIsCustomer] = React.useState(false);
+  const [category, setCategory] = React.useState("");
+
+  const getCategories = () => {
+    categoryServices.getCategories().then((data) => {
+      setCategories(data);
+    });
+  };
+  React.useEffect(getCategories, []);
   return (
     <div className="Registerback">
       <div className={classes.container}>
@@ -79,14 +95,30 @@ const Register = (props) => {
           <br />
           {!isCustomer && (
             <>
-              <TextField
+              {/* <TextField
                 label="Categories"
                 fullWidth
                 value={categories}
                 onChange={(e) => {
                   setCategories(e.target.value);
+                }} */}
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="category"
+                fullWidth
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
                 }}
-              />
+              >
+                {categories.map((d, index) => (
+                  <MenuItem value={d._id} key={index}>
+                    {d.title}
+                  </MenuItem>
+                ))}
+              </Select>
+
               <br />
             </>
           )}
@@ -127,7 +159,7 @@ const Register = (props) => {
                     email,
                     password,
                     username,
-                    categories,
+                    category,
                     phone,
                     details
                   )

@@ -6,7 +6,7 @@ var b_usersSchema = mongoose.Schema({
   username: String,
   email: String,
   phone: String,
-  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
+  categories: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   password: String,
   details: String,
   role: Number,

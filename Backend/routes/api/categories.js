@@ -5,6 +5,7 @@ var { Category } = require("../../models/categorymodel");
 
 //get all categories
 router.get("/", async (req, res) => {
+  console.log("ss");
   let allcategories = await Category.find();
   return res.send(allcategories);
 });
