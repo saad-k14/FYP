@@ -21,7 +21,7 @@ const Requests = (props) => {
   const classes = useStyles();
   const getData = () => {
     requestServices
-      .getRequests()
+      .getCustomerUserRequests()
       .then((data) => {
         setRequests(data);
       })

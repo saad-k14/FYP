@@ -10,6 +10,8 @@ class RequestService extends GenericService {
   getSingleRequest = (_id) => this.get("request/" + _id);
 
   getSingleUserRequests = (id) => this.get("request/myrequests/" + id);
+  getBusinessUserRequests = () => this.get("b_user/myrequests/");
+  getCustomerUserRequests = () => this.get("c_user/myrequests/");
 }
 
 let requestServices = new RequestService();

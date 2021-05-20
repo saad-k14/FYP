@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
 let { b_Users } = require("../../../models/b_usersmodel");
+let { Request } = require("../../../models/requestmodel");
 const businessauth = require("../../../middlewares/businessauth");
 var bcrypt = require("bcryptjs");
 const _ = require("lodash");
@@ -83,6 +84,13 @@ router.get("/", async (req, res) => {
       ])
     )
   );
+});
+router.get("/myrequests", businessauth, async (req, res) => {
+  let requests = await Request.find({
+    category: req.user.categories[0],
+    approved: false,
+  });
+  return res.send(requests);
 });
 
 //search a single user via username

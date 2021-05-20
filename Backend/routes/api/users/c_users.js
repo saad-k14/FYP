@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
 let { c_Users } = require("../../../models/b_usersmodel");
+let { Request } = require("../../../models/requestmodel");
 const customerauth = require("../../../middlewares/customerauth");
 var bcrypt = require("bcryptjs");
 const _ = require("lodash");
@@ -43,6 +44,12 @@ router.post("/login", async (req, res) => {
     config.get("jwtPrivatekey")
   );
   res.send(token);
+});
+router.get("/myrequests", customerauth, async (req, res) => {
+  let requests = await Request.find({
+    user: req.user._id,
+  });
+  return res.send(requests);
 });
 
 //update customer

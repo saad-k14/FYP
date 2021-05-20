@@ -8,6 +8,7 @@ var requestSchema = mongoose.Schema({
   minprice: Number,
   maxprice: Number,
   duration: Number,
+  approved: { type: Boolean, default: false },
   //acknowledgedBy: [],
   //ratingGiven: { type: Boolean, default: false },
 });
