@@ -94,9 +94,12 @@ router.get("/myrequests", businessauth, async (req, res) => {
 });
 
 //search a single user via username
-router.get("/:username", async (req, res) => {
+router.get("/username/:username", async (req, res) => {
   try {
-    let user = await b_Users.findOne({ username: req.params.username });
+    let user = await b_Users.find({
+      username: req.params.username,
+      role: 0,
+    });
     if (!user) return res.status(400).send("the username belongs to no user"); //when username is not available
     return res.send(
       user.map((user) =>
@@ -108,10 +111,12 @@ router.get("/:username", async (req, res) => {
           "phone",
           "categories",
           "details",
+          "role",
         ])
       )
     ); //all good
   } catch (err) {
+    console.log(err);
     return res.status(400).send("Invalid username"); //when format aint correct
   }
 });
