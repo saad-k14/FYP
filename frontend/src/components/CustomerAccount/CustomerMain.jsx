@@ -4,9 +4,9 @@ import CustomerUserAuth from "../auth/CustomerUserAuth";
 const Customerpage = () => {
   const [user, setUser] = useState({});
   React.useEffect(() => {
-    const user = CustomerServices.getLoggedInUser();
-    //   if (!user) window.location.href = "/login";
-    setUser(user);
+    const users = CustomerServices.getLoggedInUser();
+    if (!users) window.location.href = "/login";
+    setUser(users);
   }, []);
 
   return (

@@ -9,11 +9,9 @@ var b_usersSchema = mongoose.Schema({
   categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
   password: String,
   details: String,
-  role: {
-    type: String,
-    default: "business",
-  },
+  role: Number,
 });
+//role 0 business 1 customer 2 admin
 var b_Users = mongoose.model("User", b_usersSchema);
 
 //for registration

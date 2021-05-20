@@ -45,18 +45,27 @@ class BusinessService extends GenericService {
         });
     });*/
   isLoggedIn = () => {
+    try {
+      const jwt = localStorage.getItem("token");
+      if (!jwt) return false;
+      const user = jwtDecode(jwt);
+      if (user.role == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+
     const jwt = localStorage.getItem("token");
     if (!jwt) return false;
-    const user = jwtDecode(jwt);
-    if (user.role == "business") {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   };
   getLoggedInUser = () => {
+    // return { name: "ss" };
     try {
-      // if (!this.isLoggedIn()) return null;
+      if (!this.isLoggedIn()) return null;
       const jwt = localStorage.getItem("token");
       return jwtDecode(jwt);
     } catch (ex) {

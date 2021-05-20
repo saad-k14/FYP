@@ -37,7 +37,7 @@ class CustomerService extends GenericService {
     const jwt = localStorage.getItem("token");
     if (!jwt) return false;
     const user = jwtDecode(jwt);
-    if (user.role == "customer") {
+    if (user.role == 1) {
       return true;
     } else {
       return false;
@@ -45,7 +45,7 @@ class CustomerService extends GenericService {
   };
   getLoggedInUser = () => {
     try {
-      //  if (!this.isLoggedIn()) return null;
+      if (!this.isLoggedIn()) return null;
       const jwt = localStorage.getItem("token");
       return jwtDecode(jwt);
     } catch (ex) {

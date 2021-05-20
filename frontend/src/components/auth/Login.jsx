@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Login = (props) => {
   const classes = useStyles();
-  const [email, setEmail] = React.useState("admin1@gmail.com");
+  const [email, setEmail] = React.useState("test1@gmail.com");
   const [password, setPassword] = React.useState("password");
   const [isCustomer, setIsCustomer] = React.useState(false);
   return (

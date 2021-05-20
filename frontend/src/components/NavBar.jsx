@@ -8,7 +8,7 @@ class NavBar extends React.Component {
     if (window.location.href.indexOf("/business") > -1) {
       return <BusinessMenu />;
     }
-    if (window.location.href.indexOf("/Customer") > -1) {
+    if (window.location.href.indexOf("/customer") > -1) {
       return <CustomerMenu />;
     }
     return <Menu />;

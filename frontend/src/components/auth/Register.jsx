@@ -1,9 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Grid, Switch } from "@material-ui/core";
 import BusinessServices from "../../services/BusinessService";
+import CustomerServices from "../../services/CustomerService";
 
 import { toast } from "react-toastify";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -24,6 +26,7 @@ const Register = (props) => {
   const [phone, setPhone] = React.useState("");
   const [categories, setCategories] = React.useState("");
   const [details, setDetails] = React.useState("");
+  const [isCustomer, setIsCustomer] = React.useState(false);
   return (
     <div className="Registerback">
       <div className={classes.container}>
@@ -74,47 +77,87 @@ const Register = (props) => {
             }}
           />{" "}
           <br />
-          <TextField
-            label="Categories"
-            fullWidth
-            value={categories}
-            onChange={(e) => {
-              setCategories(e.target.value);
-            }}
-          />{" "}
-          <br />
-          <TextField
-            label="Details"
-            fullWidth
-            value={details}
-            onChange={(e) => {
-              setDetails(e.target.value);
-            }}
-          />{" "}
-          <br />
+          {!isCustomer && (
+            <>
+              <TextField
+                label="Categories"
+                fullWidth
+                value={categories}
+                onChange={(e) => {
+                  setCategories(e.target.value);
+                }}
+              />
+              <br />
+            </>
+          )}
+          {!isCustomer && (
+            <>
+              <TextField
+                label="Details"
+                fullWidth
+                value={details}
+                onChange={(e) => {
+                  setDetails(e.target.value);
+                }}
+              />
+              <br />
+            </>
+          )}
+          <Grid component="label" container alignItems="center" spacing={1}>
+            <Grid item>Business User</Grid>
+            <Grid item>
+              <Switch
+                checked={isCustomer}
+                onChange={() => {
+                  setIsCustomer(!isCustomer);
+                }}
+                name="isCustomer"
+                color="primary"
+              />
+            </Grid>
+            <Grid item>Customer User</Grid>
+          </Grid>
           <Button
             variant="contained"
             color="primary"
             onClick={(e) => {
-              BusinessServices.register(
-                name,
-                email,
-                password,
-                username,
-                categories,
-                phone,
-                details
-              )
-                .then((data) => {
-                  console.log(data);
-                  props.history.push("/login");
-                })
-                .catch((err) => {
-                  console.log(err);
-                  toast.error(err.response.data, {
-                    position: toast.POSITION.TOP_LEFT,
-                  });
-                });
+              !isCustomer
+                ? BusinessServices.register(
+                    name,
+                    email,
+                    password,
+                    username,
+                    categories,
+                    phone,
+                    details
+                  )
+                    .then((data) => {
+                      console.log(data);
+                      props.history.push("/login");
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      toast.error(err.response.data, {
+                        position: toast.POSITION.TOP_LEFT,
+                      });
+                    })
+                : CustomerServices.register(
+                    name,
+                    email,
+                    password,
+                    username,
+                    phone
+                  )
+                    .then((data) => {
+                      console.log(data);
+                      props.history.push("/login");
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      toast.error(err.response.data, {
+                        position: toast.POSITION.TOP_LEFT,
+                      });
+                    });
             }}
           >
             Register

@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
   user = new b_Users();
   user.name = req.body.name;
   user.password = req.body.password;
-  user.role = "business";
+  user.role = 0;
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   user.username = req.body.username;
@@ -33,6 +33,7 @@ router.post("/login", async (req, res) => {
   if (!user) return res.status(400).send("User is not registered");
   let isValid = await bcrypt.compare(req.body.password, user.password);
   if (!isValid) return res.status(401).send("Invalid Password!!");
+  if (user.role != 0) return res.status(401).send("User role is not business");
   let token = jwt.sign(
     {
       _id: user._id,
@@ -41,6 +42,7 @@ router.post("/login", async (req, res) => {
       phone: user.phone,
       categories: user.categories,
       details: user.details,
+      role: user.role,
     },
     config.get("jwtPrivatekey")
   );

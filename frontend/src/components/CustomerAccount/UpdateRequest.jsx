@@ -1,20 +1,33 @@
 import React from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
+import axios from "axios";
 import requestServices from "../../services/RequestService";
-import CustomerServices from "../../services/CustomerService";
-const SendRequest = (props) => {
-  //const [user, setUser] = React.useState("");
+
+const UpdateRequest = (props) => {
+  const [user, setUser] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [details, setDetails] = React.useState("");
   const [minprice, setMinprice] = React.useState("");
   const [maxprice, setMaxprice] = React.useState("");
   const [duration, setDuration] = React.useState("");
+
+  const id = props.match.params.id;
+  React.useEffect(() => {
+    requestServices.getSingleRequest(id).then((data) => {
+      setUser(data.user);
+      setCategory(data.category);
+      setDetails(data.details);
+      setMinprice(data.minprice);
+      setMaxprice(data.maxprice);
+      setDuration(data.duration);
+    });
+  }, []);
   return (
-    <div className="newRequest">
+    <div className="UpdatepageforRequest">
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <div className="RequestHeading">
-            <h1>Add a New Request</h1>
+            <h1>Update This Request</h1>
           </div>
         </Grid>
         <Grid item xs={3}></Grid>
@@ -76,8 +89,8 @@ const SendRequest = (props) => {
             color="primary"
             onClick={(e) => {
               requestServices
-                .addRequest({
-                  user: CustomerServices.getLoggedInUser()._id,
+                .updateRequest(id, {
+                  user,
                   category,
                   details,
                   minprice,
@@ -86,14 +99,14 @@ const SendRequest = (props) => {
                 })
                 .then((data) => {
                   console.log(data);
-                  props.history.push("customer/requests");
+                  window.location.href = "/customer/requests";
                 })
                 .catch((err) => {
                   console.log(err);
                 });
             }}
           >
-            Add New
+            Update
           </Button>
         </Grid>
       </Grid>
@@ -101,4 +114,4 @@ const SendRequest = (props) => {
   );
 };
 
-export default SendRequest;
+export default UpdateRequest;

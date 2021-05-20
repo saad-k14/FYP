@@ -24,14 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = () => {
   const classes = useStyles();
-  React.useEffect(() => {
-    if (BusinessServices.isLoggedIn()) {
-      window.location.href = "/business";
-    }
-    if (CustomerServices.isLoggedIn()) {
-      window.location.href = "/customer";
-    }
-  }, []);
 
   return (
     <div className={classes.root}>

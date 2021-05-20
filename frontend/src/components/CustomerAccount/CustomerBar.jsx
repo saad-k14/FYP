@@ -37,7 +37,7 @@ const CustomerMenu = () => {
             <Link to="/Customer">Profile</Link>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/Customer/SendRequests">Send Request</Link>
+            <Link to="customer/requests">Requests</Link>
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link to="/Customer/SearchBusiness">Search Business</Link>
@@ -71,7 +71,7 @@ const CustomerMenu = () => {
                 window.location.reload();
               }}
             >
-              LogOut {CustomerServices.getLoggedInUser().name}
+              LogOut
             </Button>
           )}
         </Toolbar>

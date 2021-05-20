@@ -14,11 +14,12 @@ router.post("/register", async (req, res) => {
     return res.status(400).send("User with the given email already exists");
   user = new c_Users();
   user.name = req.body.name;
-  user.role = "customer";
+  user.role = 1;
   user.password = req.body.password;
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   user.email = req.body.email;
+  user.username = req.body.username;
   user.phone = req.body.phone;
   await user.save();
   return res.send(_.omit(user, ["password"]));
@@ -30,8 +31,15 @@ router.post("/login", async (req, res) => {
   if (!user) return res.status(400).send("User is not registered");
   let isValid = await bcrypt.compare(req.body.password, user.password);
   if (!isValid) return res.status(401).send("Invalid Password!!");
+  if (user.role != 1) return res.status(401).send("User role is not customer");
   let token = jwt.sign(
-    { _id: user._id, name: user.name, phone: user.phone },
+    {
+      _id: user._id,
+      name: user.name,
+      phone: user.phone,
+      username: user.username,
+      role: user.role,
+    },
     config.get("jwtPrivatekey")
   );
   res.send(token);

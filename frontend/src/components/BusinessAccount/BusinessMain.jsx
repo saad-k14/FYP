@@ -4,10 +4,9 @@ import BusinessUserAuth from "../auth/BusinessUserAuth";
 const Businesspage = (props) => {
   const [user, setUser] = useState({});
   React.useEffect(() => {
-    const user = BusinessServices.getLoggedInUser();
-    console.log(user);
-    if (!user) window.location.href = "/login";
-    setUser(user);
+    const users = BusinessServices.getLoggedInUser();
+    if (!users) window.location.href = "/login";
+    setUser(users);
   }, []);
   return (
     //  <BusinessUserAuth>

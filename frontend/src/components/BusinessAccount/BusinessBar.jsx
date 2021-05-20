@@ -68,7 +68,7 @@ const BusinessMenu = () => {
                 window.location.reload();
               }}
             >
-              LogOut {BusinessServices.getLoggedInUser()}
+              LogOut
             </Button>
           )}
         </Toolbar>

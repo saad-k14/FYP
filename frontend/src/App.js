@@ -22,9 +22,11 @@ import Categories from "./components/categories/Categories";
 import NewCategory from "./components/categories/NewCategory";
 import UpdateCategory from "./components/categories/UpdateCategory";
 
-import Requests from "./components/requests/Requests";
+// import Requests from "./components/requests/Requests";
+import Requests from "./components/CustomerAccount/Requests";
 import NewRequest from "./components/requests/NewRequest";
-import UpdateRequest from "./components/requests/UpdateRequest";
+//import UpdateRequest from "./components/requests/UpdateRequest";
+import UpdateRequest from "./components/CustomerAccount/UpdateRequest";
 
 //import BusinessMenu from "./components/BusinessAccount/BusinessBar";
 
@@ -56,7 +58,7 @@ function App() {
 
           <Route path="/requests/newrequest" component={NewRequest} />
           <Route path="/requests/update/:id" component={UpdateRequest} />
-          <Route exacy path="/requests" component={Requests} />
+          {/* <Route exacy path="/requests" component={Requests} /> */}
 
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />
@@ -73,6 +75,11 @@ function App() {
           <Route path="/customer/register" exact component={C_Register} /> */}
 
           <Route path="/customer/sendrequests" component={sendrequest} />
+          <Route
+            path="/customer/request/update/:id"
+            component={UpdateRequest}
+          />
+          <Route path="/customer/requests" component={Requests} />
           <Route path="/customer/searchbusiness" component={searchbusiness} />
           <Route path="/customer" component={customerpage} />
 
