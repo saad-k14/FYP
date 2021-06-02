@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  background-image: url("./dibuzz.jpg");
+  color: white;
 }
 
 .Homeback {
@@ -12,5 +12,9 @@
 }
 
 .MainBar {
+  background-color: #ffee00;
+}
+
+.App {
   background-color: #23b1ca;
 }

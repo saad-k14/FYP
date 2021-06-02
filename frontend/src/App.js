@@ -46,7 +46,7 @@ import { ToastContainer, toast } from "react-toastify";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="App">
         <h1 className="title">Dibuzz</h1>
         <NavBar />
         <Switch>
