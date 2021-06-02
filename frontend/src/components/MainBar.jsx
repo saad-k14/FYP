@@ -27,53 +27,54 @@ const Menu = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="transparent">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="primary"
-            aria-label="menu"
-          ></IconButton>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/">Home</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/AboutUs">About Us</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/ContactUs">Contact Us</Link>
-          </Typography>
-          {!AuthServices.isLoggedIn() ? (
-            <>
-              <div className="login">
-                <Typography variant="h6">
-                  <Link to="/login" className={classes.link}>
-                    Login
-                  </Link>
-                </Typography>
-              </div>
-              <div className="Register">
-                <Typography variant="h6">
-                  <Link to="/register" className={classes.link}>
-                    Register
-                  </Link>
-                </Typography>
-              </div>
-            </>
-          ) : (
-            <Button
-              variant="contained"
+      <div className="MainBar">
+        <AppBar position="static" color="transparent">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
               color="primary"
-              onClick={(e) => {
-                AuthServices.logout();
-                window.location.reload();
-              }}
-            >
-              LogOut
-            </Button>
-          )}
-          {/* {!AuthServices.isLoggedIn() ? (
+              aria-label="menu"
+            ></IconButton>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/">Home</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/AboutUs">About Us</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/ContactUs">Contact Us</Link>
+            </Typography>
+            {!AuthServices.isLoggedIn() ? (
+              <>
+                <div className="login">
+                  <Typography variant="h6">
+                    <Link to="/login" className={classes.link}>
+                      Login
+                    </Link>
+                  </Typography>
+                </div>
+                <div className="Register">
+                  <Typography variant="h6">
+                    <Link to="/register" className={classes.link}>
+                      Register
+                    </Link>
+                  </Typography>
+                </div>
+              </>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={(e) => {
+                  AuthServices.logout();
+                  window.location.reload();
+                }}
+              >
+                LogOut
+              </Button>
+            )}
+            {/* {!AuthServices.isLoggedIn() ? (
             <>
               <div className="login">
                 <Typography variant="h6">
@@ -102,8 +103,9 @@ const Menu = () => {
               LogOut {AuthServices.getLoggedInUser().name}
             </Button>
           )} */}
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </div>
     </div>
   );
 };
