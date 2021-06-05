@@ -12,6 +12,9 @@ import NotFound from "./components/NotFound";
 import ContactUs from "./components/ContactUs";
 //import Menu from "./components/MainBar";
 import NavBar from "./components/NavBar";
+
+import GoogleApiWrapper from "./components/maps";
+
 import Businesspage from "./components/BusinessAccount/BusinessMain";
 import Checkrequests from "./components/BusinessAccount/CheckRequests";
 import sendrequest from "./components/CustomerAccount/SendRequest";
@@ -62,6 +65,8 @@ function App() {
 
           <Route path="/AboutUs" component={AboutUs} />
           <Route path="/ContactUs" component={ContactUs} />
+
+          <Route path="/maps" component={GoogleApiWrapper} />
 
           {/* <Route path="/business/login" component={B_Login} />
           <Route path="/business/register" component={B_Register} /> */}
