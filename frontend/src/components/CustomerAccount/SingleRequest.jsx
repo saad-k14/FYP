@@ -44,7 +44,7 @@ const SingleRequest = (props) => {
       </h2>
       <p>{request.details}</p>
       <p>
-        {request.minprice}, {request.maxprice}
+        minprice = {request.minprice}, maxprice = {request.maxprice}
       </p>
       <p>{request.duration}</p>
       <hr />
