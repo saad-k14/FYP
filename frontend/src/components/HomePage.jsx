@@ -12,7 +12,9 @@ import {
   FormControl,
   Button,
   Grid,
+  Box,
 } from "@material-ui/core";
+import { palette } from "@material-ui/system";
 
 import categoryServices from "../services/CategoriesService";
 import SingleCategory from "./categories/SingleCategory";
@@ -68,7 +70,8 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>This is where a customer will search businesses with categories</h1>
+      <h1>Welcome to Dibuzz</h1>
+      <h2>here you can search the businesses by username or categorically</h2>
       <div className={classes.root} noValidate autoComplete="on">
         <TextField
           id="filled-basic"
@@ -82,6 +85,7 @@ const HomePage = () => {
         <Button
           variant="contained"
           color="primary"
+          size="small"
           onClick={(e) => {
             BusinessServices.getB_UsersByUsername(username).then((data) => {
               setB_users(data);
@@ -110,6 +114,7 @@ const HomePage = () => {
         <Button
           variant="contained"
           color="primary"
+          size="small"
           onClick={(e) => {
             BusinessServices.getB_UsersBycategory(category).then((data) => {
               setB_users(data);
@@ -122,10 +127,12 @@ const HomePage = () => {
       <div>
         <br />
         {b_users.length != 0 ? (
-          <Grid container spacing={3}>
-            {b_users.map((requests, index) => (
-              <SingleBusiness key={index} b_user={requests} />
-            ))}
+          <Grid>
+            <Grid>
+              {b_users.map((requests, index) => (
+                <SingleBusiness key={index} b_user={requests} />
+              ))}
+            </Grid>
           </Grid>
         ) : (
           <div>

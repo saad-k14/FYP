@@ -43,55 +43,65 @@ import Register from "./components/auth/Register";
 
 import { ToastContainer, toast } from "react-toastify";
 
+import { Box, Container } from "@material-ui/core";
+import { palette } from "@material-ui/system";
+
 //import logo from './logo.svg';
 //import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <h1 className="title">Dibuzz</h1>
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={HomePage} />
+      <Container maxWidth="xl">
+        <div className="App">
+          <Box bgcolor="info.main">
+            <h1 className="title">Dibuzz</h1>
+            <NavBar />
+            <Switch>
+              <Route path="/" exact component={HomePage} />
 
-          <Route path="/categories/newcategory" component={NewCategory} />
-          <Route path="/categories/update/:id" component={UpdateCategory} />
-          <Route exacy path="/categories" component={Categories} />
+              <Route path="/categories/newcategory" component={NewCategory} />
+              <Route path="/categories/update/:id" component={UpdateCategory} />
+              <Route exacy path="/categories" component={Categories} />
 
-          <Route path="/requests/newrequest" component={NewRequest} />
-          <Route path="/requests/update/:id" component={UpdateRequest} />
-          {/* <Route exacy path="/requests" component={Requests} /> */}
+              <Route path="/requests/newrequest" component={NewRequest} />
+              <Route path="/requests/update/:id" component={UpdateRequest} />
+              {/* <Route exacy path="/requests" component={Requests} /> */}
 
-          <Route path="/AboutUs" component={AboutUs} />
-          <Route path="/ContactUs" component={ContactUs} />
+              <Route path="/AboutUs" component={AboutUs} />
+              <Route path="/ContactUs" component={ContactUs} />
 
-          <Route path="/maps" component={GoogleApiWrapper} />
+              <Route path="/maps" component={GoogleApiWrapper} />
 
-          {/* <Route path="/business/login" component={B_Login} />
+              {/* <Route path="/business/login" component={B_Login} />
           <Route path="/business/register" component={B_Register} /> */}
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
 
-          <Route path="/business/checkrequests" component={Checkrequests} />
-          <Route path="/business" exact component={Businesspage} />
+              <Route path="/business/checkrequests" component={Checkrequests} />
+              <Route path="/business" exact component={Businesspage} />
 
-          {/* <Route path="/customer/login" exact component={C_Login} />
+              {/* <Route path="/customer/login" exact component={C_Login} />
           <Route path="/customer/register" exact component={C_Register} /> */}
 
-          <Route path="/customer/sendrequests" component={sendrequest} />
-          <Route
-            path="/customer/request/update/:id"
-            component={UpdateRequest}
-          />
-          <Route path="/customer/requests" component={Requests} />
-          <Route path="/customer/searchbusiness" component={Searchbusiness} />
-          <Route path="/customer" component={Searchbusiness} />
+              <Route path="/customer/sendrequests" component={sendrequest} />
+              <Route
+                path="/customer/request/update/:id"
+                component={UpdateRequest}
+              />
+              <Route path="/customer/requests" component={Requests} />
+              <Route
+                path="/customer/searchbusiness"
+                component={Searchbusiness}
+              />
+              <Route path="/customer" component={Searchbusiness} />
 
-          <Route path="/Not-Found" component={NotFound} />
-          <Redirect to="/Not-Found" />
-        </Switch>
-      </div>
+              <Route path="/Not-Found" component={NotFound} />
+              <Redirect to="/Not-Found" />
+            </Switch>
+          </Box>
+        </div>
+      </Container>
     </Router>
   );
 }

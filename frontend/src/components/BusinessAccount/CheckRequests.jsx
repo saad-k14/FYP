@@ -47,14 +47,16 @@ const Checkrequests = (props) => {
         <p>there are no requests yet</p>
       ) : (
         <div className="Requests">
-          <Grid container spacing={3}>
-            {requests.map((requests, index) => (
-              <SingleRequest
-                key={index}
-                request={requests}
-                onDelete={getData}
-              />
-            ))}
+          <Grid>
+            <Grid>
+              {requests.map((requests, index) => (
+                <SingleRequest
+                  key={index}
+                  request={requests}
+                  onDelete={getData}
+                />
+              ))}
+            </Grid>
           </Grid>
         </div>
       )}

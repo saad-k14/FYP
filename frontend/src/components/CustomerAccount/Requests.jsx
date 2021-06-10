@@ -10,7 +10,7 @@ import requestServices from "../../services/RequestService";
 
 const useStyles = makeStyles((theme) => ({
   addBtn: {
-    position: "absolute",
+    position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
@@ -55,14 +55,16 @@ const Requests = (props) => {
         <p>there are no requests yet</p>
       ) : (
         <div className="Requests">
-          <Grid container spacing={3}>
-            {requests.map((requests, index) => (
-              <SingleRequest
-                key={index}
-                request={requests}
-                onDelete={getData}
-              />
-            ))}
+          <Grid>
+            <Grid>
+              {requests.map((requests, index) => (
+                <SingleRequest
+                  key={index}
+                  request={requests}
+                  onDelete={getData}
+                />
+              ))}
+            </Grid>
           </Grid>
         </div>
       )}

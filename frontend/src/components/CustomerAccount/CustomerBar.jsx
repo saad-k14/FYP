@@ -25,57 +25,60 @@ const CustomerMenu = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="transparent">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="primary"
-            aria-label="menu"
-          ></IconButton>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/Customer">Profile</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/customer/requests">Requests</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/Customer/SearchBusiness">Search Business</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/ContactUs">Contact Us</Link>
-          </Typography>
-          {!CustomerServices.isLoggedIn() ? (
-            <>
-              <div className="login">
-                <Typography variant="h6">
-                  <Link to="/customer/login" className={classes.link}>
-                    Login
-                  </Link>
-                </Typography>
-              </div>
-              <div className="Register">
-                <Typography variant="h6">
-                  <Link to="/customer/register" className={classes.link}>
-                    Register
-                  </Link>
-                </Typography>
-              </div>
-            </>
-          ) : (
-            <Button
-              variant="contained"
+      <div className="MenuBar">
+        <AppBar position="static" color="transparent">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
               color="primary"
-              onClick={(e) => {
-                CustomerServices.logout();
-                window.location.reload();
-              }}
-            >
-              LogOut
-            </Button>
-          )}
-        </Toolbar>
-      </AppBar>
+              aria-label="menu"
+            ></IconButton>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/Customer">Profile</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/customer/requests">Requests</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/Customer/SearchBusiness">Search Business</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/ContactUs">Contact Us</Link>
+            </Typography>
+            {!CustomerServices.isLoggedIn() ? (
+              <>
+                <div className="login">
+                  <Typography variant="h6">
+                    <Link to="/customer/login" className={classes.link}>
+                      Login
+                    </Link>
+                  </Typography>
+                </div>
+                <div className="Register">
+                  <Typography variant="h6">
+                    <Link to="/customer/register" className={classes.link}>
+                      Register
+                    </Link>
+                  </Typography>
+                </div>
+              </>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={(e) => {
+                  CustomerServices.logout();
+                  window.location.reload();
+                }}
+              >
+                LogOut
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
     </div>
   );
 };

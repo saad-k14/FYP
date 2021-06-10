@@ -72,6 +72,7 @@ const Searchbusiness = () => {
         <Button
           variant="contained"
           color="primary"
+          size="small"
           onClick={(e) => {
             BusinessServices.getB_UsersByUsername(username).then((data) => {
               setB_users(data);
@@ -100,6 +101,7 @@ const Searchbusiness = () => {
         <Button
           variant="contained"
           color="primary"
+          size="small"
           onClick={(e) => {
             BusinessServices.getB_UsersBycategory(category).then((data) => {
               setB_users(data);
@@ -112,10 +114,12 @@ const Searchbusiness = () => {
       <div>
         <br />
         {b_users.length != 0 ? (
-          <Grid container spacing={3}>
-            {b_users.map((requests, index) => (
-              <SingleBusiness key={index} b_user={requests} />
-            ))}
+          <Grid>
+            <Grid>
+              {b_users.map((requests, index) => (
+                <SingleBusiness key={index} b_user={requests} />
+              ))}
+            </Grid>
           </Grid>
         ) : (
           <div>

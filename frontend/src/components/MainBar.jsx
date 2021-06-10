@@ -27,7 +27,7 @@ const Menu = () => {
 
   return (
     <div className={classes.root}>
-      <div className="MainBar">
+      <div className="MenuBar">
         <AppBar position="static" color="transparent">
           <Toolbar>
             <IconButton
@@ -66,6 +66,7 @@ const Menu = () => {
               <Button
                 variant="contained"
                 color="primary"
+                size="small"
                 onClick={(e) => {
                   AuthServices.logout();
                   window.location.reload();

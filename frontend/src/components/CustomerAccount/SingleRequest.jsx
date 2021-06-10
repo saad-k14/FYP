@@ -44,9 +44,9 @@ const SingleRequest = (props) => {
       </h2>
       <p>{request.details}</p>
       <p>
-        minprice = {request.minprice}, maxprice = {request.maxprice}
+        minprice = {request.minprice}$, maxprice = {request.maxprice}$
       </p>
-      <p>{request.duration}</p>
+      <p>days = {request.duration}</p>
       <hr />
     </Grid>
   );

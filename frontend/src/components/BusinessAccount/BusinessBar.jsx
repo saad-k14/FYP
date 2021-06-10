@@ -25,54 +25,57 @@ const BusinessMenu = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="transparent">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="primary"
-            aria-label="menu"
-          ></IconButton>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/Business">Profile</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/Business/CheckRequests">Check Requests</Link>
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/ContactUs">Contact Us</Link>
-          </Typography>
-          {!BusinessServices.isLoggedIn() ? (
-            <>
-              <div className="login">
-                <Typography variant="h6">
-                  <Link to="/business/login" className={classes.link}>
-                    Login
-                  </Link>
-                </Typography>
-              </div>
-              <div className="Register">
-                <Typography variant="h6">
-                  <Link to="/business/register" className={classes.link}>
-                    Register
-                  </Link>
-                </Typography>
-              </div>
-            </>
-          ) : (
-            <Button
-              variant="contained"
+      <div className="MenuBar">
+        <AppBar position="static" color="transparent">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
               color="primary"
-              onClick={(e) => {
-                BusinessServices.logout();
-                window.location.reload();
-              }}
-            >
-              LogOut
-            </Button>
-          )}
-        </Toolbar>
-      </AppBar>
+              aria-label="menu"
+            ></IconButton>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/Business">Profile</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/Business/CheckRequests">Check Requests</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/ContactUs">Contact Us</Link>
+            </Typography>
+            {!BusinessServices.isLoggedIn() ? (
+              <>
+                <div className="login">
+                  <Typography variant="h6">
+                    <Link to="/business/login" className={classes.link}>
+                      Login
+                    </Link>
+                  </Typography>
+                </div>
+                <div className="Register">
+                  <Typography variant="h6">
+                    <Link to="/business/register" className={classes.link}>
+                      Register
+                    </Link>
+                  </Typography>
+                </div>
+              </>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={(e) => {
+                  BusinessServices.logout();
+                  window.location.reload();
+                }}
+              >
+                LogOut
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
     </div>
   );
 };
