@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
+const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
@@ -36,6 +37,12 @@ app.use("/api/business", business);
 app.use("/api/requests", requests);
 app.use("/api/chats", chats);
 app.use("/api/contacts", contacts);
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 mongoose
   .connect("mongodb://localhost/dibuzz", {
