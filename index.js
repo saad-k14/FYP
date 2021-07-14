@@ -45,7 +45,7 @@ app.get("*", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://localhost/dibuzz", {
+  .connect("mongodb+srv://dibuzz:Dibuzz123@cluster0.l0bii.mongodb.net/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
