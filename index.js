@@ -45,11 +45,14 @@ app.get("*", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb+srv://dibuzz:Dibuzz123@cluster0.l0bii.mongodb.net/test", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
+  .connect(
+    "mongodb+srv://dibuzz:Dibuzz123@cluster0.l0bii.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    }
+  )
   .then(() => console.log("Db connected"))
   .catch((err) => console.log(err));
 
