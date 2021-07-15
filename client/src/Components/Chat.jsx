@@ -57,7 +57,7 @@ const Chat = (props) => {
   const onChangeReceiver = (id) => {
     getSingleUser(id);
   };
-
+//useffect to send request to turn on the socket
   React.useEffect(() => {
     socket = io.connect(END_POINT);
 
@@ -208,7 +208,7 @@ const Chat = (props) => {
                 <input
                   type="text"
                   className="form-control border py-1"
-                  placeholder="Enter Your Email"
+                  placeholder="Enter Your Message"
                   style={{ height: "auto" }}
                   value={message}
                   onChange={(e) => {

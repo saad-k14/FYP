@@ -83,7 +83,7 @@ io.on("connect", (socket) => {
   socket.on("join", ({ tempRoom }) => {
     socket.join(tempRoom);
   });
-
+//send message on when button is pressed
   socket.on(
     "sendMessage",
     async ({ sender, receiver, room, message }, callback) => {

@@ -125,6 +125,7 @@ const BusinessSearch = (props) => {
   };
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
+      //get user's current location
       (position) => {
         setCurrentLocation({
           lat: position.coords.latitude,
