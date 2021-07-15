@@ -144,7 +144,6 @@ const CustomerRequests = (props) => {
           </div>
         </div>
       </section>
-      <Newsletter />
       <Footer />
     </>
   );

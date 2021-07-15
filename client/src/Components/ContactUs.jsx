@@ -3,6 +3,7 @@ import Header from "./Common/Header";
 import Newsletter from "./Common/Newsletter";
 import Footer from "./Common/Footer";
 import { addContact } from "../Services/contactsService";
+import { Link } from "react-router-dom";
 
 const ContactUs = (props) => {
   const [name, setName] = React.useState("");
@@ -39,9 +40,9 @@ const ContactUs = (props) => {
         <div className="container">
           <div className="col-lg-12 col-md-12">
             <div className="pt-caption text-center">
-              <h1>Get in Touch</h1>
+              <h1>Contact Us</h1>
               <p>
-                <a href="index.html">Home</a>
+                <Link to="/">Home</Link>
                 <span className="current-page">Contact Us</span>
               </p>
             </div>
@@ -59,10 +60,10 @@ const ContactUs = (props) => {
                     <i className="ti-home theme-cl"></i>
                   </div>
                   <div className="add-text-box">
-                    <h4>Workio Limited</h4>
-                    CEO: Sagar Singh
+                    <h4>Dibuzz.com</h4>
+                    CEO: Muhammad Saad Mukhtar
                     <br />
-                    CFO: Shaurya Singh
+                    CFO: Malik Mahroze
                     <br />
                   </div>
                 </div>
@@ -73,9 +74,9 @@ const ContactUs = (props) => {
                   </div>
                   <div className="add-text-box">
                     <h4>Head Offices</h4>
-                    810 Clis Road,
+                    241, Jasmine Block, Bahria Town
                     <br />
-                    Indraprash NW11 0PU, India
+                    Lahore, Pakistan
                   </div>
                 </div>
 
@@ -85,9 +86,9 @@ const ContactUs = (props) => {
                   </div>
                   <div className="add-text-box">
                     <h4>Emails</h4>
-                    Workio@gmail.com
+                    saadkhan1405@gmail.com
                     <br />
-                    my.Workio@gmail.com
+                    malikmahroze100@outlook.com
                     <br />
                   </div>
                 </div>
@@ -97,9 +98,9 @@ const ContactUs = (props) => {
                   </div>
                   <div className="add-text-box">
                     <h4>Calls</h4>
-                    91+ 123 456 9857
+                    +92 320 4747459
                     <br />
-                    91+ 258 548 5426
+                    +92 304 3838071
                     <br />
                   </div>
                 </div>
@@ -164,7 +165,7 @@ const ContactUs = (props) => {
                     className="btn btn-primary"
                     onClick={handleSubmit}
                   >
-                    Send Request
+                    Submit
                   </button>
                 </form>
               </div>
@@ -173,7 +174,6 @@ const ContactUs = (props) => {
         </div>
       </section>
       <div className="clearfix"></div>
-      <Newsletter />
       <Footer />
     </>
   );

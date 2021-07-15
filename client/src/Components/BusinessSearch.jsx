@@ -216,7 +216,7 @@ const BusinessSearch = (props) => {
                     <input
                       type="text"
                       className="form-control b-r"
-                      placeholder="Job Title or Keywords"
+                      placeholder="Username"
                       onChange={handleSearch}
                     />
                   </div>

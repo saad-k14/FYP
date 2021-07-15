@@ -76,14 +76,14 @@ const BusinessSignup = (props) => {
       <div
         className="page-title-wrap pt-img-wrap"
         style={{
-          background: 'url("https://via.placeholder.com/1920x800")',
+          background: 'url("assets/images/Signup.jpeg")',
           backgroundRepeat: "no-repeat",
         }}
       >
         <div className="container">
           <div className="col-lg-12 col-md-12">
             <div className="pt-caption text-center">
-              <h1>Create Business Account</h1>
+              <h1>Register Business Account</h1>
               <p>
                 <a href="index.html">Home</a>
                 <span className="current-page">Register Business</span>
@@ -253,7 +253,6 @@ const BusinessSignup = (props) => {
       </section>
       <div className="clearfix"></div>
       <Notification notify={notify} setNotify={setNotify}></Notification>
-      <Newsletter />
       <Footer />
     </>
   );

@@ -610,7 +610,6 @@ const BusinessDetail = (props) => {
           </div>
         </div>
       </div>
-      <Newsletter />
       <Footer />
     </>
   );

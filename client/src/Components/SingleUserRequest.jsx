@@ -220,7 +220,6 @@ const SingleUserRequest = (props) => {
           </div>
         </div>
       </div>
-      <Newsletter />
       <Footer />
     </>
   );

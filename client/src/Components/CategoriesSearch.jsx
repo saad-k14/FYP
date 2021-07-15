@@ -105,7 +105,6 @@ const CategoriesSearch = (props) => {
           </div>
         </div>
       </section>
-      <Newsletter />
       <Footer />
     </>
   );

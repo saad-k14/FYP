@@ -48,7 +48,7 @@ const Login = (props) => {
       <div
         className="page-title-wrap pt-img-wrap"
         style={{
-          background: 'url("https://via.placeholder.com/1920x800")',
+          background: 'url("assets/images/Signup.jpeg")',
           backgroundRepeat: "no-repeat",
         }}
       >
@@ -57,7 +57,7 @@ const Login = (props) => {
             <div className="pt-caption text-center">
               <h1>Sign In Your Account</h1>
               <p>
-                <a href="index.html">Home</a>
+                <Link to="/">Home</Link>
                 <span className="current-page">Log In</span>
               </p>
             </div>
@@ -131,7 +131,6 @@ const Login = (props) => {
       </section>
       <div className="clearfix"></div>
       <Notification notify={notify} setNotify={setNotify}></Notification>
-      <Newsletter />
       <Footer />
     </>
   );

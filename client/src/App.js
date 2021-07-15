@@ -11,6 +11,7 @@ import BusinessSearch from "./Components/BusinessSearch";
 import BusinessDetail from "./Components/BusinessDetail";
 import UserRegister from "./Components/UserRegister";
 import ContactUs from "./Components/ContactUs";
+import AboutUs from "./Components/Aboutus";
 import PostRequest from "./Components/PostRequest";
 import MyRequests from "./Components/MyRequests";
 import Requests from "./Components/Admin/Requests/Requests";
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/login" component={Login}></Route>
       <Route exact path="/businessRegister" component={BusinessSignup}></Route>
       <Route exact path="/contact" component={ContactUs}></Route>
+      <Route exact path="/about" component={AboutUs}></Route>
       <Route exact path="/userRegister" component={UserRegister}></Route>
       <Route exact path="/postRequest" component={PostRequest}></Route>
       <Route exact path="/myRequests" component={MyRequests}></Route>
