@@ -108,7 +108,7 @@ const BusinessSearch = (props) => {
                 lat: parseFloat(business.latitude),
                 lon: parseFloat(business.longitude),
               },
-              100000
+              1000000
             )
           ) {
             filtered.push(business);
@@ -161,7 +161,7 @@ const BusinessSearch = (props) => {
               lat: parseFloat(business.latitude),
               lon: parseFloat(business.longitude),
             },
-            100000
+            1000000
           )
         ) {
           filtered.push(business);
@@ -178,7 +178,7 @@ const BusinessSearch = (props) => {
                 lat: parseFloat(business.latitude),
                 lon: parseFloat(business.longitude),
               },
-              100000
+              1000000
             )
           ) {
             filtered.push(business);
