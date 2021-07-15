@@ -58,7 +58,7 @@ function validateBusiness(data) {
       .regex(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)
       .required(),
     email: Joi.string().email().required(),
-    website: Joi.string().uri().required(),
+    website: Joi.string().uri().allow(""),
     country: Joi.string().required(),
     city: Joi.string().required(),
     address: Joi.string().required(),
