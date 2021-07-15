@@ -396,6 +396,12 @@ const CreateProfile = (props) => {
                             />
                           </div>
                         </div>
+                        <div className="NOTE">
+                          <p>
+                            *Copy your latitude and longitude by clicking Right
+                            on your location on Google Maps*
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -596,7 +602,6 @@ const CreateProfile = (props) => {
         </div>
       </section>
       <Notification notify={notify} setNotify={setNotify}></Notification>
-      <Newsletter />
       <Footer />
     </>
   );

@@ -281,7 +281,6 @@ const SingleRequest = (props) => {
           </div>
         </div>
       </div>
-      <Newsletter />
       <Footer />
     </>
   );

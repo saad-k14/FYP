@@ -55,16 +55,16 @@ const UserRegister = (props) => {
       <div
         className="page-title-wrap pt-img-wrap"
         style={{
-          background: 'url("https://via.placeholder.com/1920x800")',
+          background: 'url("assets/images/Signup.jpeg")',
           backgroundRepeat: "no-repeat",
         }}
       >
         <div className="container">
           <div className="col-lg-12 col-md-12">
             <div className="pt-caption text-center">
-              <h1>Create User Account</h1>
+              <h1>Register User Account</h1>
               <p>
-                <a href="index.html">Home</a>
+                <Link to="/">Home</Link>
                 <span className="current-page">Register</span>
               </p>
             </div>
@@ -194,7 +194,7 @@ const UserRegister = (props) => {
                 </div>
                 <div>
                   <Link to="/businessRegister">
-                    <b>REGISTER YOUR BUSINESS</b>
+                    <b>REGISTER YOUR BUSINESS!!</b>
                   </Link>
                 </div>
               </div>
@@ -204,7 +204,6 @@ const UserRegister = (props) => {
       </section>
       <div className="clearfix"></div>
       <Notification notify={notify} setNotify={setNotify}></Notification>
-      <Newsletter />
       <Footer />
     </>
   );

@@ -231,7 +231,6 @@ const Chat = (props) => {
           </div>
         </div>
       </div>
-      <Newsletter />
       <Footer />
     </>
   );

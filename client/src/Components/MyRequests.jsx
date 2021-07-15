@@ -152,7 +152,6 @@ const MyRequests = (props) => {
         </div>
       </section>
       <Notification notify={notify} setNotify={setNotify}></Notification>
-      <Newsletter />
       <Footer />
     </>
   );

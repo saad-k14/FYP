@@ -60,7 +60,7 @@ const Home = () => {
                     <input
                       type="text"
                       className="form-control b-r"
-                      placeholder="Job Title or Keywords"
+                      placeholder="Username"
                     />
                   </div>
                 </div>
@@ -147,7 +147,6 @@ const Home = () => {
                           {category.categoryName}
                         </Link>
                       </h5>
-                      <span>6 new job</span>
                     </div>
                   </div>
                 </div>
@@ -165,7 +164,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section
+        {/* <section
           className="image-bg image-light text-center"
           style={{ background: 'url("https://via.placeholder.com/1920x800")' }}
           data-overlay="7"
@@ -192,8 +191,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
-        <section
+        </section> */}
+        {/* <section
           className="image-bg text-center"
           style={{
             background: "#1cadcb",
@@ -232,14 +231,14 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="gray">
           <div className="container">
             <div className="row">
               <div className="col text-center">
                 <div className="sec-heading mx-auto">
                   <p>Our Client Review</p>
-                  <h2>What People Saying?</h2>
+                  <h2>What people are saying?</h2>
                 </div>
               </div>
             </div>
@@ -257,8 +256,8 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <h5 className="mb-0">Adam Gillworm</h5>
-                      <span>Envato Market</span>
+                      <h5 className="mb-0">Muhammad Naqvi</h5>
+                      <span>Volioche</span>
                       <div className="rating">
                         <span className="fa fa-star"></span>
                         <span className="fa fa-star"></span>
@@ -270,9 +269,8 @@ const Home = () => {
                   </div>
 
                   <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas.
+                    Dibuzz is a great initiative. It made it easy for me to find
+                    services
                   </p>
                 </div>
               </div>
@@ -288,8 +286,35 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <h5 className="mb-0">Jully Jiliven</h5>
-                      <span>Envato Manager</span>
+                      <h5 className="mb-0">Muhammad Saad</h5>
+                      <span>DivSet studios</span>
+                      <div className="rating">
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p>Helped me find a guy for home repair, Thank you Dibuzz</p>
+                </div>
+              </div>
+
+              <div style={{ width: "90%" }}>
+                <div className="testimonial-wrap style-2">
+                  <div className="client-thumb-box">
+                    <div className="client-thumb-content">
+                      <div className="client-thumb">
+                        <img
+                          src="https://via.placeholder.com/400x400"
+                          className="img-responsive img-circle"
+                          alt=""
+                        />
+                      </div>
+                      <h5 className="mb-0">Abdul Raffay</h5>
+                      <span></span>
                       <div className="rating">
                         <span className="fa fa-star"></span>
                         <span className="fa fa-star"></span>
@@ -301,9 +326,8 @@ const Home = () => {
                   </div>
 
                   <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas.
+                    "I really liked using this site. Just had to post a request
+                    and people came to me on my terms. Highly recommended."
                   </p>
                 </div>
               </div>
@@ -319,8 +343,8 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <h5 className="mb-0">Gill Wormdom</h5>
-                      <span>SEO Mind LTD CEO</span>
+                      <h5 className="mb-0">Javeria Tariq</h5>
+                      <span>Graphic designer</span>
                       <div className="rating">
                         <span className="fa fa-star"></span>
                         <span className="fa fa-star"></span>
@@ -332,71 +356,8 @@ const Home = () => {
                   </div>
 
                   <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ width: "90%" }}>
-                <div className="testimonial-wrap style-2">
-                  <div className="client-thumb-box">
-                    <div className="client-thumb-content">
-                      <div className="client-thumb">
-                        <img
-                          src="https://via.placeholder.com/400x400"
-                          className="img-responsive img-circle"
-                          alt=""
-                        />
-                      </div>
-                      <h5 className="mb-0">Adam Gillworm</h5>
-                      <span>Envato Market</span>
-                      <div className="rating">
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ width: "90%" }}>
-                <div className="testimonial-wrap style-2">
-                  <div className="client-thumb-box">
-                    <div className="client-thumb-content">
-                      <div className="client-thumb">
-                        <img
-                          src="https://via.placeholder.com/400x400"
-                          className="img-responsive img-circle"
-                          alt=""
-                        />
-                      </div>
-                      <h5 className="mb-0">Jully Jiliven</h5>
-                      <span>Envato Manager</span>
-                      <div className="rating">
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas.
+                    Great Initiative. Helped me find a photographer for my new
+                    designs. Really glad this exists.
                   </p>
                 </div>
               </div>
@@ -405,7 +366,6 @@ const Home = () => {
           </div>
         </section>
         <div className="clearfix"></div>
-        <Newsletter />
         <Footer />
       </div>
     </>

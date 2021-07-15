@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -15,18 +16,18 @@ const Footer = () => {
                 />
                 <div className="footer-add">
                   <p>
-                    Collins Street West, Victoria,
-                    <br /> Australia (AU4578).
+                    Jasmine Block, Bahria Town, Lahore
+                    <br /> Pakistan (PK)
                   </p>
                   <p>
                     <strong>Email:</strong>
                     <br />
-                    <a href="#">hello@workstock.com</a>
+                    <a href="#">hello@dibuzz.com</a>
                   </p>
                   <p>
                     <strong>Call:</strong>
                     <br />
-                    91 855 742 62548
+                    +92 320 4747459
                   </p>
                 </div>
               </div>
@@ -36,19 +37,19 @@ const Footer = () => {
                 <h4 className="widget-title">Navigations</h4>
                 <ul className="footer-menu">
                   <li>
-                    <a href="#">New Home Design</a>
+                    <Link className="nav-link" to="/">
+                      Home
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Browse Candidates</a>
+                    <Link className="nav-link" to="/about">
+                      About Us
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Browse Employers</a>
-                  </li>
-                  <li>
-                    <a href="#">Advance Search</a>
-                  </li>
-                  <li>
-                    <a href="#">Job With Map</a>
+                    <Link className="nav-link" to="/contact">
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -56,22 +57,13 @@ const Footer = () => {
 
             <div className="col-lg-2 col-md-2">
               <div className="footer-widget">
-                <h4 className="widget-title">The Highlights</h4>
+                <h4 className="widget-title">Connect</h4>
                 <ul className="footer-menu">
                   <li>
-                    <a href="#">Home Page 2</a>
-                  </li>
-                  <li>
-                    <a href="#">Home Page 3</a>
-                  </li>
-                  <li>
-                    <a href="#">Home Page 4</a>
-                  </li>
-                  <li>
-                    <a href="#">Home Page 5</a>
-                  </li>
-                  <li>
-                    <a href="#">LogIn</a>
+                    <Link to="/login">
+                      <i className="ti-user mr-1"></i>
+                      <span className="dn-lg">Login/Register</span>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -79,52 +71,19 @@ const Footer = () => {
 
             <div className="col-lg-2 col-md-2">
               <div className="footer-widget">
-                <h4 className="widget-title">My Account</h4>
+                <h4 className="widget-title">Search</h4>
                 <ul className="footer-menu">
                   <li>
-                    <a href="#">Dashboard</a>
+                    <Link className="nav-link" to="/categoriesSearch">
+                      Categories
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Applications</a>
-                  </li>
-                  <li>
-                    <a href="#">Packages</a>
-                  </li>
-                  <li>
-                    <a href="#">resume.html</a>
-                  </li>
-                  <li>
-                    <a href="#">SignUp Page</a>
+                    <Link className="nav-link" to="/businessSearch">
+                      Businesses
+                    </Link>
                   </li>
                 </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-3">
-              <div className="footer-widget">
-                <h4 className="widget-title">Download Apps</h4>
-                <a href="#" className="other-store-link">
-                  <div className="other-store-app">
-                    <div className="os-app-icon">
-                      <i className="ti-android theme-cl"></i>
-                    </div>
-                    <div className="os-app-caps">
-                      Google Play
-                      <span>Get It Now</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" className="other-store-link">
-                  <div className="other-store-app">
-                    <div className="os-app-icon">
-                      <i className="ti-apple theme-cl"></i>
-                    </div>
-                    <div className="os-app-caps">
-                      App Store
-                      <span>Now it Available</span>
-                    </div>
-                  </div>
-                </a>
               </div>
             </div>
           </div>
@@ -136,7 +95,7 @@ const Footer = () => {
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-6">
               <p className="mb-0">
-                © 2020 Work Stocks. Designd By PixelExperts All Rights Reserved
+                © 2020 Dibuzz. Designd By Team Dibuzz. All Rights Reserved
               </p>
             </div>
 
