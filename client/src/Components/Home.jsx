@@ -344,7 +344,7 @@ const Home = () => {
                         />
                       </div>
                       <h5 className="mb-0">Javeria Tariq</h5>
-                      <span>Graphic designer</span>
+                      <span>Graphic Designer</span>
                       <div className="rating">
                         <span className="fa fa-star"></span>
                         <span className="fa fa-star"></span>
@@ -357,7 +357,7 @@ const Home = () => {
 
                   <p>
                     Great Initiative. Helped me find a photographer for my new
-                    designs. Really glad this exists.
+                    project. Really glad this exists.
                   </p>
                 </div>
               </div>
